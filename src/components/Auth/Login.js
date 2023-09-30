@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
-
+import { useNavigate } from 'react-router-dom'; 
+import { useAuth0 } from "@auth0/auth0-react";
+import './style/Login.css';
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const Client_Id="b04aca659fdf2f798ab7096009a8a8291f736aca";
-  const Client_Id="29cdd8d66bee20aae31e";
+  const { loginWithRedirect } = useAuth0();
 
   const login = () => {
     axios.post('http://localhost:3000/login', { email, password })
@@ -23,33 +23,37 @@ function Login() {
   const redirectToRegister = () => {
     navigate('/registration'); 
   };
-  function loginwithgithub()
-  {
-    window.location.assign("https://github.com/login/oauth/authorize?client_id="+Client_Id);
-  }
+
+  const loginWithGithub = () => {
+    loginWithRedirect({
+      connection: "github"
+    });
+  };
 
   return (
-    <div>
-      <fieldset>
-
-      <h2>Login</h2>
-      <br />
-      <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <br />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <br />
-      <button onClick={login}>Login</button>
-      <br />
-      <div>Dont have an account please signup</div>
-      <button onClick={redirectToRegister}>Sign Up</button>
-      <hr />
-      <br />
-      <div>or</div>
-      <br />
-      <button  onClick={loginwithgithub}>Login with Github</button>
-      </fieldset>
-
+    <div className="container">
+    <div className="row justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="col-md-6 p-4 rounded login-form">
+        <h2 className="text-center mb-4">Login</h2>
+        <div className="mb-3">
+          <input type="text" className="form-control" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className="mb-3">
+          <input type="password" className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <div className="mb-3 d-flex justify-content-center">
+          <button className="btn btn-primary me-2" onClick={login}>Login</button>
+          <button className="btn btn-secondary" onClick={redirectToRegister}>Sign Up</button>
+        </div>
+        <hr />
+        <div className="text-center my-4">or</div>
+        <div className="mb-3 d-flex justify-content-center">
+          <button className="btn btn-dark" onClick={loginWithGithub}>Login with Github</button>
+        </div>
+      </div>
     </div>
+  </div>
+
   );
 }
 
