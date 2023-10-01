@@ -44,7 +44,7 @@ function Registration() {
 
   return (
     <div className="container">
-    <div className="row justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+    <div className="row justify-content-center align-items-center min-vh-100">
       <div className="col-md-6 p-4 rounded registration-form">
         <h2 className="text-center mb-4">Registration</h2>
         <div className='mb-3'>
@@ -94,7 +94,6 @@ function Registration() {
       </div>
     </div>
   </div>
-
   );
 }
 

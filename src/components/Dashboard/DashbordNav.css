@@ -1,0 +1,36 @@
+/* DashbordNav.css */
+.logo {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff; /* Set navbar toggle icon color */
+  }
+  
+  .navbar-toggler {
+    border: none; /* Remove border from the navbar toggler */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff; /* Set link color */
+    margin: 0 15px; /* Adjust link spacing */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: transparent;
+    border: #ffffff 1px solid;
+
+    color: #ffffff; /* Set link hover color */
+  }
+  .navbar-nav .nav-item {
+
+    cursor: default;
+}
+.navbar-nav .nav-item.active {
+    
+
+    background-color: #ff0000; /* Set background color for active item */
+    border-color: #000000; /* Set border color for active item */
+    color: #fff; /* Set text color for active item */
+}

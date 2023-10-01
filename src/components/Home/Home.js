@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import bgvideo from './Videos/backgroundvideo.mp4'
 import './style/Home.css'
+// import logo from './Images/Logo/Course_Crafter.png'
 
 export default function Home() {
   return (
@@ -9,8 +10,8 @@ export default function Home() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-black">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <img src="logo.png" alt="Logo" width="50" height="50" className="mr-2" />
-            <span className="brand-text">Course Crafter</span>
+            {/* <img src={logo} alt="Logo" width="30" height="30" className="mr-2" /> */}
+            <span className="brand-text ">Course Crafter</span>
           </Link>
           <button
             className="navbar-toggler"

@@ -7,7 +7,6 @@ import Registration from './components/Auth/Registration';
 import UserDashboard from './components/Dashboard/UserDashboard';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
-
 function App() {
   const { isLoading } = useAuth0();
 
@@ -18,16 +17,17 @@ function App() {
   return (
     <Router>
       <Routes>
-     
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/dashboard" element={withAuthenticationRequired(UserDashboard)} />
-
+        {/* Protect the UserDashboard route and its child routes */}
+        <Route
+          path="/dashboard/*"
+          element={<UserDashboard />}
+        />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-// vishnukantmule  ZOLXjcsdt7EhYQh1
