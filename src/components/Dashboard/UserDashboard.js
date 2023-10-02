@@ -20,7 +20,7 @@ export default function UserDashboard() {
       case 'notes':
         return <Notes />;
       default:
-        return <CreateCourse />; // Default to CreateCourse if option not recognized
+        return <CreateCourse />;
     }
   };
 

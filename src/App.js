@@ -20,7 +20,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        {/* Protect the UserDashboard route and its child routes */}
         <Route
           path="/dashboard/*"
           element={<UserDashboard />}

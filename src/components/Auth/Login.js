@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import './style/Login.css';
 function Login() {
@@ -13,7 +13,7 @@ function Login() {
     axios.post('http://localhost:3000/login', { email, password })
       .then((response) => {
         if (response.data.message === "Login Successful") {
-          navigate('/dashboard'); 
+          navigate('/dashboard');
         } else {
           alert("Login Failed");
         }
@@ -21,7 +21,7 @@ function Login() {
   };
 
   const redirectToRegister = () => {
-    navigate('/registration'); 
+    navigate('/registration');
   };
 
   const loginWithGithub = () => {
