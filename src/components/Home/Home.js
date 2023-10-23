@@ -45,10 +45,15 @@ export default function Home() {
           <source src={bgvideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
         <div className="video-overlay">
-          <h1>Welcome to Course Crafter</h1>
-          <p>Your personalized learning experience</p>
-        </div>
+  <h1 className="bordered-text">
+    Welcome To CourseCrafterAI
+  </h1>
+  <p>Your personalized learning experience</p>
+</div>
+
+
       </div>
 
       <div className="container mt-5">
@@ -82,12 +87,24 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="bg-black text-white text-center py-3">
-        <div className="container">
-          <h4>About Us</h4>
-          <p>Connect with Us.</p>
+      <footer className="bg-black text-white text-center py-5">
+      <div className="container">
+        <h4>About Us</h4>
+        <p>Connect with Us:</p>
+        <div className="social-icons mb-3">
+          <a href="/" className="text-white mx-2">
+            {/* <FaFacebook /> */}
+          </a>
+          <a href="/" className="text-white mx-2">
+            {/* <FaTwitter /> */}
+          </a>
+          <a href="/" className="text-white mx-2">
+            {/* <FaInstagram /> */}
+          </a>
         </div>
-      </footer>
+        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+      </div>
+    </footer>
     </div>
 
   );

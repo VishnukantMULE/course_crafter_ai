@@ -27,7 +27,7 @@ export default function UserDashboard() {
   return (
     <div>
       <DashbordNav setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
-      <div className="content">{renderComponent()}</div>
+      <div className="content">{ renderComponent()}</div>
     </div>
   );
 }

@@ -1,0 +1,43 @@
+/* GeneratedCourse.css */
+
+/* Styles for the module container */
+.module-container {
+    background-color: #000000;
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .module-container:hover {
+    background-color: #fb0000;
+  }
+  
+  .module-container.active {
+    background-color: #cf0909;
+    color: #fff;
+  }
+  
+  /* Styles for the accordion */
+  .accordion-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .accordion-button.active {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  
+  /* Styles for the chapter list */
+  .list-group-item {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8f9fa;
+  }
+  

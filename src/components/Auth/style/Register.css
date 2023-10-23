@@ -1,0 +1,18 @@
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+.container
+{
+    color: rgb(0, 0, 0);
+}
+.col-md-6{
+    border:rgb(0, 0, 0) 1px solid;
+
+
+}
+
+.form-border {
+    border: 1px solid rgb(0, 0, 0); /* Set border color to white */
+}
+

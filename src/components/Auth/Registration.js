@@ -21,7 +21,7 @@ function Registration() {
 
 
   const handleRegistration = () => {
-    axios.post('http://localhost:5000/users/registration', {
+    axios.post('http://localhost:5000/registration', {
       firstName,
       lastName,
       phone,

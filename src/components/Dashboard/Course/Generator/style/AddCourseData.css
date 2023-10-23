@@ -15,3 +15,25 @@
     font-size: 14px;
   }
   
+  /* AddCourseData.css */
+/* ... existing styles ... */
+
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger {
+    margin-right: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.module-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* ... existing styles ... */

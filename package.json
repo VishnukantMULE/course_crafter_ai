@@ -1,10 +1,10 @@
 {
-  "homepage": "https://VishnukantMULE.github.io/course_crafter_ai",
   "name": "course_crafter_ai",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.2.1",
+    "@formkit/auto-animate": "^0.8.0",
     "@liveblocks/client": "^1.4.0",
     "@liveblocks/react": "^1.4.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -20,6 +20,8 @@
     "react-scripts": "5.0.1",
     "react-sketch": "^0.5.1",
     "react-sketch2": "^0.5.7",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

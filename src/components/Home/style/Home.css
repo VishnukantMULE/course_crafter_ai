@@ -1,22 +1,27 @@
 .homepage {
     position: relative;
+    background-color: #000; /* Set the background color to black */
+    color: #fff; /* Set text color to white */
 }
 
 .fullscreen-video-container {
     position: relative;
     height: 100vh;
     overflow: hidden;
+
 }
 
 .fullscreen-video {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    min-height: 100%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
+    top: 0;
+    left: 0;
+    /* z-index: -1; */
 }
+
 
 .video-overlay {
     position: absolute;
@@ -28,11 +33,20 @@
 }
 
 .section {
-    background-color: #f8f9fa;
+    background-color: #000000;
+    color: #ffffff; /* Set text color to white */
     padding: 40px;
     border-radius: 10px;
     text-align: center;
     margin-top: 20px;
+    border: 2px solid #ffffff; /* White border */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3); /* White shadow for a modern look */
+    transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+.section:hover {
+    transform: scale(1.05); /* Scale up the section on hover */
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6); /* Increase shadow on hover */
 }
 
 
@@ -65,3 +79,92 @@
     background-color: #333;
     border-radius: 5px;
 }
+
+
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    font-size: 2rem;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 1em;
+    display: inline-block;
+    font-size: 5rem;
+    animation: typing 6s steps(50, end) forwards, fade 2s ease-out, colorChange 6s infinite;
+    will-change: transform, opacity;
+
+
+}
+.bordered-text {
+    display: inline-block;
+    text-shadow: 
+    -1px -1px 0 #000000, /* Top-left border */
+    1px -1px 0 #000000, /* Top-right border */
+    -1px 1px 0 #000000, /* Bottom-left border */
+    1px 1px 0 #000000; /* Bottom-right border */
+
+
+    animation: typing 6s steps(50, end) forwards, fade 2s ease-out, colorChange 6s infinite;
+}
+
+.h1.bordered-text{
+    will-change: transform, opacity;
+    transform-origin: left center;
+
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #fcfcfc; /* Start color */
+    }
+    50% {
+        color: #00ff2f; /* Middle color */
+    }
+    100% {
+        color: #ff0000; /* End color */
+    }
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .video-overlay {
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+
+.bg-black {
+    background: linear-gradient(to right, #0000005c, #000000);
+  }
