@@ -5,6 +5,7 @@ import Notes from './Course/Notes';
 import DashbordNav from './DashbordNav';
 import Mycourses from './Course/Mycourses';
 import CompletedCourse from './Course/CompletedCourse';
+import Profile from './Profile';
 
 
 export default function UserDashboard() {
@@ -21,6 +22,8 @@ export default function UserDashboard() {
         return <CompletedCourse />;
       case 'notes':
         return <Notes />;
+      case 'profile':
+        return <Profile/>;
       default:
         return <CreateCourse />;
     }

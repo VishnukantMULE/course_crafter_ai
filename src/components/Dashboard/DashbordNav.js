@@ -41,6 +41,10 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                         <li className={`nav-item ${selectedOption === 'notes' ? 'active' : ''}`} onClick={() => handleOptionClick('notes')}>
                             <span className="nav-link">Notes</span>
                         </li>
+                        <li className={`nav-item ${selectedOption === 'profile' ? 'active' : ''}`} onClick={() => handleOptionClick('profile')}>
+                            <span className='nav-link'>Profile</span>
+
+                        </li>
                     </ul>
                 </div>
             </div>
