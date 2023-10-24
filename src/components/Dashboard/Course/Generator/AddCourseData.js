@@ -43,6 +43,8 @@ export default function AddCourseData({ onGoBack }) {
         onGoBack();
     };
     const userid="651875acb5b131e72e7673ba"
+    const [generatedCourseData, setGeneratedCourseData] = useState(null);
+
 
     const handleCreateCourse = () => {
         const data = {
@@ -54,6 +56,8 @@ export default function AddCourseData({ onGoBack }) {
 
         Axios.post('http://localhost:5000/api/saveCourseData', data)
             .then((response) => {
+                setGeneratedCourseData(response.data); // Store the API response in state
+
                 setComponentToShow('generatedCourse'); // show the generated course component
                 alert('Course Created Successfully', response.data);
             })
@@ -147,7 +151,8 @@ export default function AddCourseData({ onGoBack }) {
         case 'progress':
             return <Progress />;
         case 'generatedCourse':
-            return <GeneratedCourse onGoBack={handleGoBack} />;
+            return <GeneratedCourse onGoBack={handleGoBack} courseData={generatedCourseData} />;
+
         default:
             return null;
     }

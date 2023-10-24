@@ -1,0 +1,106 @@
+/* mycourse.css */
+
+/* Styles for the main container */
+.my-courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for the heading */
+.course-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles for the cards container */
+.course-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+/* Styles for each course card */
+.course-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: calc(33.33% - 40px);
+    max-width: 300px;
+}
+
+.course-card-content {
+    padding: 20px;
+}
+
+.course-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* Styles for the course details */
+.course-details {
+    font-size: 16px;
+}
+
+/* Styles for the course name */
+.course-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Styles for the course info */
+.course-info {
+    margin-bottom: 10px;
+}
+
+/* Styles for the progress bar */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar::-webkit-progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+.progress-bar::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 10px;
+}
+
+/* Styles for the view details link */
+.view-details-link {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.view-details-link:hover {
+    text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .course-card {
+        width: calc(50% - 40px);
+    }
+}
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 480px) {
+    .course-card {
+        width: calc(100% - 40px);
+    }
+}
