@@ -1,3 +1,4 @@
+
 .card {
     margin-bottom: 20px;
   }
@@ -35,5 +36,29 @@
     align-items: center;
     margin-bottom: 10px;
 }
+.modulenumber{
+  background-color: rgb(212, 212, 212);
+  padding: 10px;
+  border: 1px solid black;
+}
 
-/* ... existing styles ... */
+
+
+/* AddCourseData.css */
+
+/* ...existing styles... */
+
+/* Adjustments for PNG buttons */
+
+.btn img {
+  margin-right: 8px; /* Adjust the space between icon and text */
+  width: 24px; /* Set the width of the icon */
+  height: 24px; /* Set the height of the icon */
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+

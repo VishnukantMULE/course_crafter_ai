@@ -1,21 +1,25 @@
 import React from 'react';
-import './DashbordNav.css';
-import logo from '../Home/Images/Logo/Course_Crafter.png';
+import './Course/style/DashbordNav.css';
+// import logo from '../Home/Images/Logo/Course_Crafter.png';
+import profilepng from './Style/ICONS/profile.png'
+import togglepng from './Course/Learning/style/ICONS/toggle.png'
+import crosspng from './Course/Learning/style/ICONS/cross.png'
 
 export default function DashbordNav({ setSelectedOption, selectedOption }) {
     const handleOptionClick = (option) => {
         setSelectedOption(option);
     };
 
-    const logoStyle = {
-        width: '50px',
-        height: 'auto',
-    };
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <img src={logo} alt="" style={logoStyle} />
+                {/* <img src={logo} alt="" style={logoStyle} /> */}
+                <div className='comapanyname'>
+
+                CourseCrafter AI
+                </div>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -25,7 +29,11 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon"></span>
+                     {selectedOption === 'profile' ? (
+            <img src={crosspng} alt="Cross Icon" className="navbar-icon" />
+          ) : (
+            <img src={togglepng} alt="Toggle Icon" className="navbar-icon" />
+          )}
                 </button>
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
@@ -42,8 +50,9 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                             <span className="nav-link">Notes</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'profile' ? 'active' : ''}`} onClick={() => handleOptionClick('profile')}>
-                            <span className='nav-link'>Profile</span>
-
+                            <span className='nav-link'>
+                                <img src={profilepng} alt="Profile Icon" /> Profile
+                            </span>
                         </li>
                     </ul>
                 </div>

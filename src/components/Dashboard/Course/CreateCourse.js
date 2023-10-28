@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AddCourseData from './Generator/AddCourseData';
-
+import './style/CreateCourse.css'
 
 export default function CreateCourse() {
   const [isAddCourseInfoVisible, setIsAddCourseInfoVisible] = useState(false);
@@ -25,7 +25,7 @@ export default function CreateCourse() {
                 ) : (
                   <div>
                     <h2 className="card-title mb-4">Create Course</h2>
-                    <button className="btn btn-primary" onClick={handleCreateCourse}>
+                    <button className="btn button " onClick={handleCreateCourse}>
                       + Create Course
                     </button>
                   </div>

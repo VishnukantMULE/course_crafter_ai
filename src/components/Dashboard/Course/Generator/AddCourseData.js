@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './style/AddCourseData.css';
+
 import Axios from 'axios';
 import Progress from './Progress';
 import GeneratedCourse from './GeneratedCourse';
+import addpng from './style/ICONS/add.png'
+import backpng from './style/ICONS/back.png'
+import deletepng from './style/ICONS/delete.png'
+import editpng from './style/ICONS/edit.png'
+import genratepng from './style/ICONS/ai.png'
 
 export default function AddCourseData({ onGoBack }) {
     const [courseName, setCourseName] = useState('');
@@ -42,7 +48,7 @@ export default function AddCourseData({ onGoBack }) {
     const handleGoBack = () => {
         onGoBack();
     };
-    const userid="651875acb5b131e72e7673ba"
+    const userid = "653c2da36a955f89e0ec2897"
     const [generatedCourseData, setGeneratedCourseData] = useState(null);
 
 
@@ -50,7 +56,7 @@ export default function AddCourseData({ onGoBack }) {
         const data = {
             courseName: courseName,
             modules: modules,
-            userid:userid,
+            userid: userid,
         };
         setComponentToShow('progress'); // show the progress component
 
@@ -82,7 +88,7 @@ export default function AddCourseData({ onGoBack }) {
                                     value={courseName}
                                     onChange={(e) => setCourseName(e.target.value)}
                                 />
-                                <button className="btn btn-primary" onClick={handleSaveCourseName}>
+                                <button className="btn button" onClick={handleSaveCourseName}>
                                     Save Course Name
                                 </button>
                             </>
@@ -94,7 +100,7 @@ export default function AddCourseData({ onGoBack }) {
                     </div>
                     {modules.map((module, index) => (
                         <div key={index} className="module-item">
-                            <span className="badge bg-primary fs-4">{index + 1}</span>
+                            <span className="modulenumber">{index + 1}</span>
                             <div className="input-group">
                                 {editModule.index === index ? (
                                     <input
@@ -112,11 +118,11 @@ export default function AddCourseData({ onGoBack }) {
                                     </button>
                                 ) : (
                                     <>
-                                        <button className="btn btn-primary" onClick={() => handleEditModule(index)}>
-                                            Edit
+                                        <button className="btn btn-outline-primary" onClick={() => handleEditModule(index)}>
+                                            <img src={editpng} alt="Edit Icon" /> Edit
                                         </button>
-                                        <button className="btn btn-danger" onClick={() => handleDeleteModule(index)}>
-                                            Delete
+                                        <button className="btn  btn-outline-danger" onClick={() => handleDeleteModule(index)}>
+                                            <img src={deletepng} alt="Delete Icon" /> Delete
                                         </button>
                                     </>
                                 )}
@@ -133,16 +139,22 @@ export default function AddCourseData({ onGoBack }) {
                                 value={newModule}
                                 onChange={(e) => setNewModule(e.target.value)}
                             />
-                            <button className="btn btn-primary" onClick={handleAddModule}>
+                            <button className="btn btn-outline-info" onClick={handleAddModule}>
+                            <img src={addpng} alt="ADD Icon" />
+
                                 Add Module
                             </button>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <button className="btn btn-secondary" onClick={handleGoBack}>
+                        <button className="btn btn-outline-secondary" onClick={handleGoBack}>
+                        <img src={backpng} alt="Back Icon" /> 
+
                             Back
                         </button>
-                        <button className="btn btn-success" onClick={handleCreateCourse}>
+                        <button className="btn btn-outline-danger" onClick={handleCreateCourse}>
+                            <img src={genratepng} alt="Ai PNg"  />
+
                             Create
                         </button>
                     </div>

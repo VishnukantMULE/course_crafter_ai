@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 import './style/Login.css';
 
@@ -8,11 +9,15 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { loginUser } = useAuth(); // Access loginUser function from useAuth hook
 
-  const login = () => {
+
+  const handleLogin = () => {
     axios.post('http://localhost:5000/login', { email, password })
       .then((response) => {
         if (response.data.message === 'Authentication successful') {
+          loginUser(response.data.userId);
+
           navigate('/dashboard');
         } else {
           alert(response.data.message);
@@ -28,17 +33,16 @@ function Login() {
     navigate('/registration');
   };
 
-
   return (
-    <div className='balck-bg'>
-      <div className='container '>
+    <div className='black-background'>
+      <div className='container'>
         <div className='row justify-content-center align-items-center min-vh-100'>
-          <div className='col-md-6 p-4 rounded login-form'>
+          <div className='col-md-6 p-4 rounded login-form-container'>
             <h2 className='text-center mb-4'>Login</h2>
             <div className='mb-3'>
               <input
                 type='text'
-                className='form-control form-border '
+                className='form-input form-border '
                 placeholder='Email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -47,17 +51,17 @@ function Login() {
             <div className='mb-3'>
               <input
                 type='password'
-                className='form-control'
+                className='form-input'
                 placeholder='Password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className='mb-3 d-flex justify-content-center'>
-              <button className='btn btn-primary me-2' onClick={login}>
+              <button className='primary-button me-2' onClick={handleLogin}>
                 Login
               </button>
-              <button className='btn btn-secondary' onClick={redirectToRegister}>
+              <button className='secondary-button' onClick={redirectToRegister}>
                 Sign Up
               </button>
             </div>

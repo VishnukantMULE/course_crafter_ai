@@ -1,0 +1,45 @@
+.course-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+  }
+  
+  .course-name {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .Toogle-button {
+    background-color: #fff;
+    color: #007acc;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .Toogle-button:hover {
+    background-color: #007acc;
+    color: #fff;
+  }
+  /* Add this CSS to your existing styles or create a new CSS file */
+.navbar-icon {
+    width: 30px; /* Set the desired width of the toggle button */
+    height: 30px; /* Set the desired height of the toggle button */
+    cursor: pointer; /* Change the cursor to a pointer to indicate it's clickable */
+    /* Add any other styles you want for the toggle button, such as margin, padding, etc. */
+  }
+  

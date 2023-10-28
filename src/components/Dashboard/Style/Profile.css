@@ -1,0 +1,84 @@
+/* Profile.css */
+
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+  
+  /* Profile Container */
+  .profile-container {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+  }
+  
+/* Profile Header (Profile Photo and Heading) */
+.profile-header {
+    margin-bottom: 20px;
+  }
+  
+  /* Circular Profile Photo */
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  /* Profile Heading */
+  .profile-heading {
+    color: orange;
+  }
+  
+  /* Edit and Logout Buttons */
+  .profile-actions {
+    margin-top: 20px;
+  }
+  
+  /* Orange Button */
+  .orange-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Orange Button Hover Effect */
+  .orange-button:hover {
+    background-color: darkorange;
+  }
+  
+  /* Edit Input Fields */
+  .edit-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Loading Message */
+  .loading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  
+  /* Error Message */
+  .error {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+    color: red;
+  }

@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import socketIOClient from 'socket.io-client';
 
 export default function Progress() {
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const socket = socketIOClient('http://localhost:5000'); // Replace with your server URL
-    socket.on('progress', (data) => {
-      console.log("Received progress data");
-      setProgress(data.step * 25); // Assuming each step is 25% of progress
-      setMessage(data.message);
-    });
+    const simulateProgress = () => {
+      let currentProgress = 0;
+      const interval = setInterval(() => {
+        if (currentProgress < 100) {
+          currentProgress += 2; // Increase the progress by 5% (adjust as needed)
+          setProgress(currentProgress);
+          setMessage(`Progress: ${currentProgress}%`);
+        } else {
+          clearInterval(interval);
+          setMessage('Progress completed!');
+        }
+      }, 3000); // Adjust the interval as needed (milliseconds)
+    };
+
+    simulateProgress();
 
     return () => {
-      socket.disconnect();
+      // Cleanup if needed
     };
   }, []);
 

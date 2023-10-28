@@ -2,11 +2,10 @@
 
 /* Styles for the module container */
 .module-container {
-    background-color: #000000;
     border: 1px solid #000000;
     margin-bottom: 10px;
-    color: white;
     padding: 5px;
+    background-color: #000000;
     cursor: pointer;
   }
   

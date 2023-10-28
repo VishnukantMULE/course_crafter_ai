@@ -1,0 +1,55 @@
+.email-verification-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .email-verification-card {
+    width: 800px;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .company-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff0000;
+  }
+  
+  .greeting {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .verification-message {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .terms {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #ffffff;
+    border: 2px solid black;
+    color: black;
+  }
+  

@@ -25,6 +25,7 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-around;
+
 }
 
 /* Styles for each course card */
@@ -34,6 +35,8 @@
     overflow: hidden;
     width: calc(33.33% - 40px);
     max-width: 300px;
+    background-color: rgba(242, 242, 242, 0.645);
+
 }
 
 .course-card-content {
@@ -84,14 +87,7 @@
     border-radius: 10px;
 }
 
-/* Styles for the view details link */
-.view-details-link {
-    color: #007bff;
-    text-decoration: none;
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-}
+
 
 .view-details-link:hover {
     text-decoration: underline;
@@ -111,3 +107,62 @@
     }
 }
 
+/* Add this CSS to your existing mycourse.css file */
+
+
+/* Styles for the details container */
+.details-container {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+  }
+  
+  /* Styles for the view details link */
+  .view-details-link {
+    color: #0008ff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px; /* Add right margin to create space between link and delete icon */
+    padding-right:100px;
+  }
+  
+  .view-details-link:hover {
+    text-decoration: underline;
+
+  }
+  
+  /* Styles for the delete button */
+  .delete-button {
+    background: none;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Styles for the delete icon */
+  .delete-icon {
+    width: 25px; /* Set the width of the delete icon */
+    height: 25px; /* Set the height of the delete icon */
+  }
+  
+  /* Hover effect for delete button */
+  .delete-button:hover .delete-icon {
+    filter: brightness(70%); /* Apply brightness filter on hover */
+    border: 1px solid black;
+
+  }
+  .empty-courses-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Set the desired height for the message container */
+    border: 1px solid #ccc; /* Border color and thickness */
+    border-radius: 5px; /* Optional: Adds rounded corners to the border */
+    margin: 20px; /* Optional: Adds some margin around the border */
+    font-size: 30px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+  }
+  

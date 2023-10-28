@@ -1,0 +1,55 @@
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.navbar-toggler-icon {
+    background-color: #ffffff; /* Change background color of the toggle button icon */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    margin: 0 15px; /* Add margin to the navbar items */
+    display: flex;
+    align-items: center; /* Align text and icon vertically */
+}
+
+.navbar-nav .nav-link:hover {
+    margin: 0 15px;
+    color: #ffffff; /* Change text color on hover */
+    border: 0.5px solid white;
+    background: none;
+}
+
+.navbar-nav .nav-item {
+    cursor: pointer; /* Change cursor style for navbar items */
+}
+
+.navbar-nav .nav-item.active {
+    background-color: #ff0000;
+    border-color: #000000;
+    color: #fff;
+}
+
+/* Profile icon styles */
+.nav-link img {
+    width: 20px; /* Set the width of the icons */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Space between icons and text */
+}
+.toggle-icon,
+.cross-icon {
+    width: 20px; /* Set the width of the icons */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Space between icons and text */
+}
+.comapanyname{
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    font-weight: bold;
+    
+}

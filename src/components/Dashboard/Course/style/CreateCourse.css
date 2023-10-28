@@ -1,0 +1,10 @@
+.button{
+    background-color: rgba(255, 28, 28, 0.828);
+    border: 1px solid black;
+    color: white;
+    font-size: large;
+}
+.button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}

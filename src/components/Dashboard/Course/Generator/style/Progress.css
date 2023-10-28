@@ -1,0 +1,19 @@
+/* progress.css */
+
+/* Container for the progress bar */
+.progress-container {
+  width: 100%;
+  background-color: #eee; /* Gray background */
+  border-radius: 5px;
+}
+
+/* Progress bar inside the container */
+.progress-bar {
+  width: 0; /* Initially, the progress bar is 0% wide */
+  height: 20px; /* Set the height of the progress bar */
+  background-color: rgb(255, 0, 0); /* Blue color for the progress bar */
+  border-radius: 5px;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+}

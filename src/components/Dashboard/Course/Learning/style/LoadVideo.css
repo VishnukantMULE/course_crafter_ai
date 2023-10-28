@@ -1,0 +1,23 @@
+.video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .valid {
+    border: 1px solid #ccc;
+  }
+  
+  .invalid {
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .invalid-link {
+    color: red;
+    font-weight: bold;
+  }
+  

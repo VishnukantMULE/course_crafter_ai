@@ -1,18 +1,61 @@
+/* Register.css */
 
-body{
-    background-color: rgb(255, 255, 255);
-}
-.container
-{
-    color: rgb(0, 0, 0);
-}
-.col-md-6{
-    border:rgb(0, 0, 0) 1px solid;
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
 
-
-}
-
-.form-border {
-    border: 1px solid rgb(0, 0, 0); /* Set border color to white */
-}
-
+  .form-input {
+    background-color: #f8f9fa;
+    color: #000;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .primary-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .primary-button:hover {
+    background-color: #cc0000;
+  }
+  
+  .secondary-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .secondary-button:hover {
+    background-color: #333;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .checkbox-input {
+    margin-right: 5px;
+  }

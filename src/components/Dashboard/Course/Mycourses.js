@@ -1,6 +1,12 @@
+
+
+
 import React, { useState, useEffect } from 'react';
-import './mycourse.css'; // Import external CSS file for styling
-import loadinggif from '../../../SVG/loading.gif'
+import './style/mycourse.css'; // Import external CSS file for styling
+import loadinggif from '../../../SVG/loading.gif';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import deletepng from './style/ICONS/delete.png';
 
 export default function Mycourses({ userid }) {
   const [courses, setCourses] = useState([]);
@@ -15,45 +21,73 @@ export default function Mycourses({ userid }) {
       },
       body: JSON.stringify({ userid: userid }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setCourses(data);
-        setIsLoading(false); // Set loading state to false when data is fetched
-      })
-      .catch((error) => {
-        console.error('Error fetching course data: ', error);
-        setIsLoading(false); // Set loading state to false in case of an error
+    .then((response) => response.json())
+    .then((data) => {
+      setCourses(data);
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.error('Error fetching course data: ', error);
+      setIsLoading(false);
+    });
+  }, [userid]);
+
+  const handleDeleteCourse = async (courseId) => {
+    try {
+      await axios.delete('http://localhost:5000/deletecourse', {
+        data: {
+          courseId: courseId,
+        },
       });
-  }, [userid]); // Dependency array includes userid to re-fetch data when userid changes
+      // Remove the deleted course from the state
+      setCourses((prevCourses) => prevCourses.filter((course) => course._id !== courseId));
+    } catch (error) {
+      console.error('Error deleting course:', error);
+    }
+  };
 
   return (
     <div className="my-courses-container">
       <h2 className="course-heading">My Courses</h2>
-      {isLoading ? ( // Check loading state and show loading message or content accordingly
-         <div className="loading-container">
-         <img src={loadinggif} alt="Loading Icon" className="loading-icon" /> {/* Display the loading icon */}
-       </div>
+      {isLoading ? (
+        <div className="loading-container">
+          <img src={loadinggif} alt="Loading Icon" className="loading-icon" />
+        </div>
+      ) : courses.length === 0 ? (
+        <div className="empty-courses-message">
+          <p>No courses available.</p>
+        </div>
       ) : (
         <div className="course-cards-container">
           {courses.map((course) => (
-            <div key={course.courseId} className="course-card">
-              <div className="course-card-content">
-                <img src={course.CourseImage} alt={course.courseName} className="course-image" />
-                <div className="course-details">
-                  <h5 className="course-name">{course.courseName}</h5>
-                  <p className="course-info">
-                    Number of Modules: {course.numberOfModules}
-                    <br />
-                    Progress:
-                    <progress value={course.progress} max="100" className="progress-bar" />
-                  </p>
-                  <a href="/" className="view-details-link">
-                    View Details
-                  </a>
-                </div>
+        <div key={course._id} className="course-card">
+          <div className="course-card-content">
+            <img src={course.CourseImage} alt={course.courseName} className="course-image" />
+            <div className="course-details">
+              <h5 className="course-name">{course.courseName}</h5>
+              <p className="course-info">
+                Number of Modules: {course.numberOfModules}
+                <br />
+                <progress value={course.progress} max="100" className="progress-bar" />
+              </p>
+              <div className="details-container">
+                <Link
+                  to={{
+                    pathname: `/course/${course.courseId}`,
+                    state: { courseId: course.courseId }
+                  }}
+                  className="view-details-link"
+                >
+                  View Details
+                </Link>
+                <button className="delete-button" onClick={() => handleDeleteCourse(course._id)}>
+                  <img src={deletepng} alt="Delete Icon" className="delete-icon" />
+                </button>
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+      ))}
         </div>
       )}
     </div>

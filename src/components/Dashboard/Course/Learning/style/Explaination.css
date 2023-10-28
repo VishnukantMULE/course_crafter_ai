@@ -1,0 +1,33 @@
+.chapter-container {
+    padding: 20px;
+    overflow-y: auto;
+    margin-left: 360px;
+    position: relative;
+    right: 0;
+    z-index: 2;
+    background-color: #fff; /* Set your desired background color for the Explanation component */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  }
+  
+  @media (max-width: 768px) {
+    .chapter-container {
+      padding: 20px;
+      margin-left: 0;
+      right: 0;
+    }
+  }
+  
+  /* Add this CSS to your existing styles or create a new CSS file */
+.loading-spinner {
+    width: 50px; /* Set the width of the loading spinner */
+    height: 50px; /* Set the height of the loading spinner */
+    border: 5px solid #ccc; /* Border thickness and color */
+    border-top: 5px solid #3498db; /* Top border color */
+    border-radius: 50%; /* Make it a circle */
+    animation: spin 1s linear infinite; /* Apply the spin animation */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); } /* Start the rotation at 0 degrees */
+    100% { transform: rotate(360deg); } /* End the rotation at 360 degrees (a full circle) */
+  }
