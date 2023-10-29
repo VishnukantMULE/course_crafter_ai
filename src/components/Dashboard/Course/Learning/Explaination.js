@@ -8,22 +8,27 @@ import loadingpng from './style/ICONS/loading.png'
 export default function Explanation({ courseId, selectedChapter, selectedModule }) {
   const [chapterData, setChapterData] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // New state to handle loading state
-  const updateCompletion = async (courseId, moduleNo, chapterNo) => {
-    try {
-      // Make a POST request to the backend API
-      const response = await axios.post('http://localhost:5000/updateCompletionStatus', {
-        courseId,
-        moduleNo,
-        chapterNo,
-      });
+ const updateCompletion = async (courseId, moduleNo, chapterNo) => {
+        try {
+            const response = await axios.post('http://localhost:5000/updateCompletionStatus', {
+                courseId,
+                moduleNo,
+                chapterNo,
+            });
 
-      console.log('Chapter completion status updated:', response.data.message);
-    } catch (error) {
-      console.error('Error updating chapter completion status:', error);
-    }
-  };
-
-
+            console.log('Chapter completion status updated:', response.data.message);
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                console.error(`Error updating chapter completion status: ${error.response.data.message}`);
+                if (error.response.data.error === "ChapterAlreadyCompleted") {
+                    // Handle the ChapterAlreadyCompleted error specifically
+                    console.error('Chapter already marked as completed for this module.');
+                }
+            } else {
+                console.error('Error updating chapter completion status:', error);
+            }
+        }
+    };
 
   useEffect(() => {
     const fetchDataFromBackend = async () => {
@@ -50,7 +55,9 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
 
         console.log('Data received from the backend:', responseData.data.chapter);
         if (responseData.data.chapter) {
-          updateCompletion(courseId, selectedModule, responseData.data.chapter.chapterNo);
+                console.log('Fetching data for courseId:', courseId, 'module:', selectedModule, 'chapter:', selectedChapter.chapterIndex);
+
+          updateCompletion(courseId, selectedModule+1, selectedChapter.chapterIndex);
         }
       } catch (error) {
         console.error('Error fetching data from the backend:', error);

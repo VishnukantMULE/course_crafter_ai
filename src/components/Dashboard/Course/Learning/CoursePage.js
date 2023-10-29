@@ -3,7 +3,7 @@ import CourseHeader from './CourseHeader';
 import Explaination from './Explaination';
 import McqTest from './McqTest';
 import CourseNavbar from './CourseNavbar';
-import ModuleHeader from './ModuleHeader';
+// import ModuleHeader from './ModuleHeader';
 import { useParams } from 'react-router-dom';
 import './style/CoursePage.css';
 
@@ -33,7 +33,7 @@ export default function CoursePage() {
             <CourseNavbar courseId={courseId} onChapterClick={handleChapterClick} className="navbar" />
           )}
           <div className="right-section">
-            <ModuleHeader courseId={courseId} className="module-header" />
+            {/* <ModuleHeader courseId={courseId} className="module-header" /> */}
             <Explaination courseId={courseId} selectedChapter={selectedChapter} selectedModule={selectedModule} className="explanation" />
             <McqTest courseId={courseId} className="mcq-test" />
           </div>

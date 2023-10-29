@@ -4,38 +4,63 @@ import './style/CourseNav.css';
 
 export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollapsed }) {
   const [course, setCourse] = useState(null);
-  const [selectedModule, setSelectedModule] = useState(0); // Set the default selected module index to 0
-  const [selectedChapter, setSelectedChapter] = useState(0); // Set the default selected chapter index to 0
+  const [selectedModule, setSelectedModule] = useState(0);
+  const [selectedChapter, setSelectedChapter] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [overallProgress, setOverallProgress] = useState(0);
 
   useEffect(() => {
     const fetchCourse = async () => {
       try {
         const response = await axios.post('http://localhost:5000/api/getCourseStructure', { courseId });
         setCourse(response.data);
+        calculateOverallProgress(response.data);
       } catch (error) {
         console.error('Error:', error);
       }
     };
 
     fetchCourse();
-  }, [courseId]);
+  }, [courseId, refreshKey]);
+
+  const calculateOverallProgress = (courseData) => {
+    let totalChapters = 0;
+    let completedChapters = 0;
+
+    courseData.modules.forEach((module) => {
+      totalChapters += module.chapters.length;
+
+      if (module.completedChapters.length === module.chapters.length) {
+        completedChapters += module.chapters.length;
+      } else {
+        completedChapters += module.completedChapters.length;
+      }
+    });
+
+    const progress = (completedChapters / totalChapters) * 100;
+    setOverallProgress(progress);
+  };
 
   const handleModuleClick = (index) => {
     setSelectedModule(index);
-    setSelectedChapter(0); // Reset selected chapter when a new module is clicked
+    setSelectedChapter(0);
     const selectedModuleObject = course.modules[index];
-    onChapterClick(index, 0, selectedModuleObject.chapters[0].chapterName); // Pass module and chapter indices to the parent component
+    onChapterClick(index, 0, selectedModuleObject.chapters[0].chapterName);
   };
 
   const handleChapterClick = (moduleIndex, chapterIndex, chapter) => {
     setSelectedChapter(chapterIndex);
-    onChapterClick(moduleIndex, chapterIndex, chapter); // Pass module and chapter indices to the parent component
+    onChapterClick(moduleIndex, chapterIndex, chapter);
+    setRefreshKey((oldKey) => oldKey + 1);
   };
 
   return (
     <div className={`course-navbar ${isNavbarCollapsed ? 'collapsed' : ''}`}>
       {course && (
         <>
+          <div className="progress-bar">
+            <div className="progress" style={{ width: `${overallProgress}%` }}></div>
+          </div>
           <div className="modules">
             {course.modules.map((module, moduleIndex) => (
               <div key={moduleIndex} className="module">
@@ -43,24 +68,26 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
                   className={`module-name ${selectedModule === moduleIndex ? 'active' : ''}`}
                   onClick={() => handleModuleClick(moduleIndex)}
                 >
-                  {`${moduleIndex + 1}. ${module.moduleName}`} {/* Add module number */}
+                  {`${moduleIndex + 1}. ${module.moduleName}`}
                 </div>
                 {selectedModule === moduleIndex && (
                   <div className="chapters">
-                    {module.chapters.map((chapter, chapterIndex) => (
-                      <div
-                        key={chapterIndex}
-                        className={`chapter ${selectedChapter === chapterIndex ? 'active' : ''}`}
-                        onClick={() => handleChapterClick(moduleIndex, chapterIndex, chapter.chapterName)}
-                      >
-                        <div className="chapter-name">{`${chapterIndex + 1}. ${chapter.chapterName}`} </div>
-                        <div className="progress-bar">
-                          <div className="progress" style={{ width: `${module.progress}%` }}>
-                            {module.progress}
+                    {module.chapters.map((chapter, chapterIndex) => {
+                      const isChapterCompleted = module.completedChapters.includes(chapterIndex);
+                      const progress = isChapterCompleted ? 100 : 0;
+                      return (
+                        <div
+                          key={chapterIndex}
+                          className={`chapter ${selectedChapter === chapterIndex ? 'active' : ''}`}
+                          onClick={() => handleChapterClick(moduleIndex, chapterIndex, chapter.chapterName)}
+                        >
+                          <div className="chapter-name">{`${chapterIndex + 1}. ${chapter.chapterName}`}</div>
+                          <div className="progress-bar">
+                            <div className="progress" style={{ width: `${progress}%` }}></div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>

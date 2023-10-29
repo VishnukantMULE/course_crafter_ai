@@ -3,8 +3,35 @@
     border: 1px solid black;
     color: white;
     font-size: large;
+    border-radius: 5px;
 }
 .button:hover{
+    color: black;
     background-color: rgb(255, 255, 255);
     border: 1px solid black;
 }
+/* style/CreateCourse.css */
+
+/* Container Styles */
+.container {
+    margin-top: 5vh;
+}
+
+/* Card Styles */
+.card {
+    text-align: center;
+}
+
+/* Container Variants */
+.generate-course-container-updated,
+.english-test-container-updated {
+    /* Styles for generate-course-container-updated and english-test-container-updated */
+    margin-bottom: 2vh;
+}
+
+/* Card Title Styles */
+.card-title-updated {
+    /* Styles for card-title-updated */
+    margin-bottom: 1vh;
+}
+
