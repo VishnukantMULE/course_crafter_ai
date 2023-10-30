@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style/AddCourseData.css';
+import { useAuth } from '../../../Auth/AuthContext'
 
 import Axios from 'axios';
 import Progress from './Progress';
@@ -11,6 +12,7 @@ import editpng from './style/ICONS/edit.png'
 import genratepng from './style/ICONS/ai.png'
 
 export default function AddCourseData({ onGoBack }) {
+    const { userid } = useAuth();
     const [courseName, setCourseName] = useState('');
     const [isCourseNameEditing, setIsCourseNameEditing] = useState(true);
     const [modules, setModules] = useState([]);
@@ -48,7 +50,6 @@ export default function AddCourseData({ onGoBack }) {
     const handleGoBack = () => {
         onGoBack();
     };
-    const userid = "653c2da36a955f89e0ec2897"
     const [generatedCourseData, setGeneratedCourseData] = useState(null);
 
 
@@ -60,7 +61,7 @@ export default function AddCourseData({ onGoBack }) {
         };
         setComponentToShow('progress'); // show the progress component
 
-        Axios.post('http://localhost:5000/api/saveCourseData', data)
+        Axios.post(`${process.env.URL}/api/saveCourseData`, data)
             .then((response) => {
                 setGeneratedCourseData(response.data); // Store the API response in state
 

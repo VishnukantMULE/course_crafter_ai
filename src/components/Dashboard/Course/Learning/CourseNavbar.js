@@ -12,7 +12,7 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/getCourseStructure', { courseId });
+        const response = await axios.post(`${process.env.URL}/api/getCourseStructure`, { courseId });
         setCourse(response.data);
         calculateOverallProgress(response.data);
       } catch (error) {

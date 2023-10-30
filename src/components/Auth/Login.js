@@ -13,7 +13,7 @@ function Login() {
 
 
   const handleLogin = () => {
-    axios.post('http://localhost:5000/login', { email, password })
+    axios.post(`https://coursecrafterai.onrender.com/login`, { email, password })
       .then((response) => {
         if (response.data.message === 'Authentication successful') {
           loginUser(response.data.userId);

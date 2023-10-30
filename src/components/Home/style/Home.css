@@ -168,3 +168,8 @@ h1 {
 .bg-black {
     background: linear-gradient(to right, #0000005c, #000000);
   }
+
+  .navbar-toggler img {
+    max-width: 20px; /* Adjust the width as needed */
+    max-height: 20px; /* Adjust the height as needed */
+  }

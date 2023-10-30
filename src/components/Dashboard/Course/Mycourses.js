@@ -14,7 +14,7 @@ export default function Mycourses({ userid }) {
 
   useEffect(() => {
     // Fetch course data from the API endpoint using the provided userid
-    fetch('http://localhost:5000/api/getCourseData', {
+    fetch(`${process.env.URL}/api/getCourseData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export default function Mycourses({ userid }) {
 
   const handleDeleteCourse = async (courseId) => {
     try {
-      await axios.delete('http://localhost:5000/deletecourse', {
+      await axios.delete(`${process.env.URL}/deletecourse`, {
         data: {
           courseId: courseId,
         },

@@ -19,7 +19,7 @@ export default function Profile() {
 
   useEffect(() => {
     // Fetch user profile data from the API endpoint using the userId from the context
-    fetch(`http://localhost:5000/profile`, {
+    fetch(`${process.env.URL}/profile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

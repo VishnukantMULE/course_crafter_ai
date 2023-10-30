@@ -31,7 +31,7 @@ function Registration() {
   };
 
   const handleRegistration = () => {
-    axios.post('http://localhost:5000/registration', {
+    axios.post(`${process.env.URL}/registration`, {
       firstName,
       lastName,
       phone,

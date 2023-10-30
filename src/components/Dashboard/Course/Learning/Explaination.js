@@ -10,7 +10,7 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
   const [isLoading, setIsLoading] = useState(true); // New state to handle loading state
  const updateCompletion = async (courseId, moduleNo, chapterNo) => {
         try {
-            const response = await axios.post('http://localhost:5000/updateCompletionStatus', {
+            const response = await axios.post(`${process.env.URL}/updateCompletionStatus`, {
                 courseId,
                 moduleNo,
                 chapterNo,
@@ -36,14 +36,14 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
         let responseData = null;
         if (selectedChapter === null) {
           // Handle default case for module1 and chapter1
-          responseData = await axios.post('http://localhost:5000/getchapterdata', {
+          responseData = await axios.post(`${process.env.URL}/getchapterdata`, {
             courseId,
             moduleNumber: 1, // Default module number (module1)
             chapterNumber: 1, // Default chapter number (chapter1)
           });
         } else {
           // Fetch data for selected chapter
-          responseData = await axios.post('http://localhost:5000/getchapterdata', {
+          responseData = await axios.post(`${process.env.URL}/getchapterdata`, {
             courseId,
             moduleNumber: selectedModule + 1,
             chapterNumber: selectedChapter.chapterIndex + 1,
