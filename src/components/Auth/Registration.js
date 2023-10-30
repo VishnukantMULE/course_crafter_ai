@@ -31,7 +31,7 @@ function Registration() {
   };
 
   const handleRegistration = () => {
-    axios.post(`${process.env.URL}/registration`, {
+    axios.post(`https://coursecrafterai.onrender.com/registration`, {
       firstName,
       lastName,
       phone,
