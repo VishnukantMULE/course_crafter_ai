@@ -3,6 +3,7 @@ import AddCourseData from './Generator/AddCourseData';
 import './style/CreateCourse.css';
 import EnglishTest from './EnglishTest';
 
+
 export default function CreateCourse() {
   const [showGenerateCourse, setShowGenerateCourse] = useState(false);
   const [showEnglishTest, setShowEnglishTest] = useState(false);
@@ -29,6 +30,8 @@ export default function CreateCourse() {
                   <button className="button" onClick={handleGenerateCourseClick}>
                     + Generate Course
                   </button>
+                  <div>
+                  </div>
                 </div>
               )}
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style/AddCourseData.css';
-import { useAuth } from '../../../Auth/AuthContext'
+
 
 import Axios from 'axios';
 import Progress from './Progress';
@@ -10,9 +10,13 @@ import backpng from './style/ICONS/back.png'
 import deletepng from './style/ICONS/delete.png'
 import editpng from './style/ICONS/edit.png'
 import genratepng from './style/ICONS/ai.png'
+import { useAuth } from '../../../Auth/AuthContext';
+
 
 export default function AddCourseData({ onGoBack }) {
-    const { userid } = useAuth();
+    const { userId } = useAuth();
+
+
     const [courseName, setCourseName] = useState('');
     const [isCourseNameEditing, setIsCourseNameEditing] = useState(true);
     const [modules, setModules] = useState([]);
@@ -57,7 +61,7 @@ export default function AddCourseData({ onGoBack }) {
         const data = {
             courseName: courseName,
             modules: modules,
-            userid: userid,
+            userid: userId,
         };
         setComponentToShow('progress'); // show the progress component
 
@@ -159,13 +163,13 @@ export default function AddCourseData({ onGoBack }) {
                             Create
                         </button>
                     </div>
+                    
                 </div>
             );
         case 'progress':
             return <Progress />;
         case 'generatedCourse':
             return <GeneratedCourse onGoBack={handleGoBack} courseData={generatedCourseData} />;
-
         default:
             return null;
     }

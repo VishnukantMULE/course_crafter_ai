@@ -17,7 +17,7 @@ export default function UserDashboard() {
   const renderComponent = () => {
     switch (selectedOption) {
       case 'create-course':
-        return <CreateCourse />;
+        return <CreateCourse userid={userId}/>;
       case 'my-learning':
         return <Mycourses userid={userId} />;
       case 'completed-courses':
