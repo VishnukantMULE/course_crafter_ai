@@ -61,7 +61,7 @@ export default function AddCourseData({ onGoBack }) {
         };
         setComponentToShow('progress'); // show the progress component
 
-        Axios.post(`${process.env.URL}/api/saveCourseData`, data)
+        Axios.post(`https://coursecrafterai.onrender.com/api/saveCourseData`, data)
             .then((response) => {
                 setGeneratedCourseData(response.data); // Store the API response in state
 

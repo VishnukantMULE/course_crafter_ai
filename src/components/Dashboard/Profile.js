@@ -19,7 +19,7 @@ export default function Profile() {
 
   useEffect(() => {
     // Fetch user profile data from the API endpoint using the userId from the context
-    fetch(`${process.env.URL}/profile`, {
+    fetch(`https://coursecrafterai.onrender.com/profile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

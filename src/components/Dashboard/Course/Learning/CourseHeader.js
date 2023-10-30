@@ -14,7 +14,7 @@ export default function CourseHeader({ courseId, username, onToggleNavbar }) {
     // Define a function to fetch the course name
     const fetchCourseName = async () => {
       try {
-        const response = await axios.post(`${process.env.URL}/getcoursename`, {
+        const response = await axios.post(`https://coursecrafterai.onrender.com/getcoursename`, {
           courseId: courseId,
         });
 
@@ -31,7 +31,7 @@ export default function CourseHeader({ courseId, username, onToggleNavbar }) {
     const fetchUserProgress = async () => {
       try {
         // Make an API call to fetch the user's progress based on courseId and username
-        const response = await axios.post(`${process.env.URL}/getuserprogress`, {
+        const response = await axios.post(`https://coursecrafterai.onrender.com/getuserprogress`, {
           courseId: courseId,
           username: username,
         });
