@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './style/CourseLanding.css';
+import Loading from '../../../Auth/Loading';
+import backpng from '../Generator/style/ICONS/back.png'
 
 export default function CourseLanding() {
   const { courseId } = useParams();
@@ -9,6 +11,9 @@ export default function CourseLanding() {
   const [selectedModule, setSelectedModule] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -26,6 +31,14 @@ export default function CourseLanding() {
     fetchCourse();
   }, [courseId]);
 
+  useEffect(() => {
+    window.onpopstate = () => {
+      navigate('/dashboard', { state: { from: 'course-landing' }, replace: true });
+    };
+  }, [navigate]);
+
+
+
   const renderButton = () => {
     let buttonText = "Start Course";
     if (course && course.progress > 0) {
@@ -33,9 +46,15 @@ export default function CourseLanding() {
     }
 
     return (
-      <Link to={`/coursepage/${courseId}`}>
-        <button className="button">{buttonText}</button>
-      </Link>
+      <div>
+
+        <Link to={`/coursepage/${courseId}`}>
+          <button className="button">{buttonText}</button>
+        </Link>
+        <button className='btn img' onClick={() => navigate('/dashboard', { state: { from: 'course-landing' }, replace: true })}>
+          <img src={backpng} alt="back" />Home
+        </button>
+      </div>
     );
   };
 
@@ -46,7 +65,9 @@ export default function CourseLanding() {
 
   return (
     <div className="course-landing">
-      {loading && <div className="loading">Loading...</div>}
+
+
+      {loading && <Loading />}
       {error && <div className="error-message">{error}</div>}
       {course && (
         <>
@@ -67,7 +88,7 @@ export default function CourseLanding() {
                 </div>
                 <div className="progress-bard">
                   <div className="progressd" style={{ width: `${calculateProgress(module)}%` }}>
-                  
+
                   </div>
                 </div>
                 {selectedModule === index && (

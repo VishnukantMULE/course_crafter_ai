@@ -1,0 +1,19 @@
+/* Loading.css */
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to 100% of the viewport height */
+    background-color: rgba(166, 166, 166, 0.751); /* Semi-transparent background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -20;
+  }
+  
+  .spinner img {
+    width: 100px; /* Adjust the width of the loading spinner as needed */
+    height: auto;
+  }
+  

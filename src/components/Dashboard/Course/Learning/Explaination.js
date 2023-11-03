@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import './style/Explaination.css'
 import LoadVideo from './LoadVideo';
-import loadingpng from './style/ICONS/loading.png'
+import Loading from '../../../Auth/Loading';
 
 export default function Explanation({ courseId, selectedChapter, selectedModule }) {
   const [chapterData, setChapterData] = useState(null);
@@ -70,7 +70,7 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
   return (
     <div className="chapter-container">
     {isLoading ? (
-      <img src={loadingpng} alt="Loading" className="loading-spinner" /> // Loading spinner image
+      <Loading/>
     ) : chapterData ? (
       <div>
         {/* <h2>{courseId}</h2> */}

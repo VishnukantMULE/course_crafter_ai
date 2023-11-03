@@ -99,11 +99,10 @@ h1 {
     font-size: 1em;
     display: inline-block;
     font-size: 5rem;
-    animation: typing 6s steps(50, end) forwards, fade 2s ease-out, colorChange 6s infinite;
+    animation: typing 4s steps(50, end) forwards, fade 2s ease-out, colorChange 6s infinite;
     will-change: transform, opacity;
-
-
 }
+
 .bordered-text {
     display: inline-block;
     text-shadow: 

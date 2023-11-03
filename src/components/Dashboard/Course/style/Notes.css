@@ -1,28 +1,72 @@
+/* Notes.css */
 .notes {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #656565;
+  border-radius: 10px;
+  padding-bottom: 50px;
+  height: 150px;
 }
 
 .notes-buttons {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  float: right;
+
+  justify-content: space-around;
 }
 
-.notes-buttons button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007BFF;
+.buttonsave {
+  
+  background-color: #ff6f61;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.notes-buttons button:hover {
-  background-color: #0056b3;
+.buttonsave:hover {
+  background-color: #ff403d;
+}
+
+.editore {
+  margin-top: 20px;
+  background-color: #f9fbee;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+/* Additional styles for Quill toolbar */
+.ql-toolbar {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.ql-toolbar button {
+  color: #333;
+}
+
+
+.notes-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonsave {
+  background-color: #ff1500;
+  color: white;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  margin-right: 10px; /* Add margin to the right of each button */
+}
+
+.buttonsave:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.buttonsave:hover {
+  background-color: #ff403d;
 }

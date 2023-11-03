@@ -1,19 +1,21 @@
-
-
-
 import React, { useState, useEffect } from 'react';
-import './style/mycourse.css'; // Import external CSS file for styling
-import loadinggif from '../../../SVG/loading.gif';
+import './style/mycourse.css'; 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import deletepng from './style/ICONS/delete.png';
+import Loading from '../../Auth/Loading';
+import CustomAlert from '../../../services/CustomAlert';
+
 
 export default function Mycourses({ userid }) {
   const [courses, setCourses] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true); 
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
 
   useEffect(() => {
-    // Fetch course data from the API endpoint using the provided userid
+    
     fetch(`https://coursecrafterai.onrender.com/api/getCourseData`, {
       method: 'POST',
       headers: {
@@ -27,8 +29,9 @@ export default function Mycourses({ userid }) {
       setIsLoading(false);
     })
     .catch((error) => {
-      console.error('Error fetching course data: ', error);
       setIsLoading(false);
+      setAlertMessage('Error fetching course data: ', error);
+      setShowAlert(true);
     });
   }, [userid]);
 
@@ -39,7 +42,6 @@ export default function Mycourses({ userid }) {
           courseId: courseId,
         },
       });
-      // Remove the deleted course from the state
       setCourses((prevCourses) => prevCourses.filter((course) => course._id !== courseId));
     } catch (error) {
       console.error('Error deleting course:', error);
@@ -51,7 +53,7 @@ export default function Mycourses({ userid }) {
       <h2 className="course-heading">My Courses</h2>
       {isLoading ? (
         <div className="loading-container">
-          <img src={loadinggif} alt="Loading Icon" className="loading-icon" />
+          <Loading/>
         </div>
       ) : courses.length === 0 ? (
         <div className="empty-courses-message">
@@ -90,6 +92,8 @@ export default function Mycourses({ userid }) {
       ))}
         </div>
       )}
+            {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
+
     </div>
   );
 }

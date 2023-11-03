@@ -7,11 +7,12 @@ body {
   }
   
   .login-container {
-    background-color: #fff;
+    background-color: #eeeeee;
     color: #000;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 20px rgba(206, 206, 206, 0.2); */
+    border: 1px solid rgb(171, 171, 171);
   }
   
   .form-input {
@@ -35,7 +36,9 @@ body {
   }
   
   .primary-button:hover {
-    background-color: #cc0000;
+    background-color: #ff0404;
+    border: 1px solid black;
+    color: #ffffff;
   }
   
   .secondary-button {
@@ -51,4 +54,52 @@ body {
   .secondary-button:hover {
     background-color: #333;
   }
+  
+  .headingnav{
+    background-color: #242424c4;
+    color: rgb(240, 240, 240);
+    border: 1px solid black;
+    font-size: 30px;
+    font-family:sans-serif;
+  }
+  .regis{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+  @media (max-width: 768px) {
+    .login-container {
+      border: none; /* Remove border on mobile screens */
+      padding: 10px; /* Adjust padding for smaller screens */
+      border-style: none;
+      box-shadow: none;
+    }
+    
+    .form-input,
+    .primary-button,
+    .secondary-button {
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Navbar styles for mobile screens */
+  .navbare {
+    background-color: #000000;
+    padding: 10px 0;
+    text-align: center; /* Center the text within the navbar */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+
+  .navh2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: #fefefe;
+  }
+
   

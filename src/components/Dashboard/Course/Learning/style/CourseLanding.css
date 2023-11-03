@@ -146,3 +146,22 @@
       font-size: 4vw;
   }
 }
+
+.btn img {
+  margin-right: 8px; /* Adjust the space between icon and text */
+  width: 15px; /* Set the width of the icon */
+  height: 15px; /* Set the height of the icon */
+}
+.btn{
+  float: right;
+  padding: 3px 20px;
+  border: 1px solid black;
+}
+.btn:hover
+{
+  color: white;
+  background-color: #000000;
+}
+.btn img:hover{
+  color: white;
+}

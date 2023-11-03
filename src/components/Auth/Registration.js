@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './style/Register.css';
+import './style/Login.css';
+import CustomAlert from '../../services/CustomAlert';
+
 
 function Registration() {
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,7 +17,7 @@ function Registration() {
   const [organization, setOrganization] = useState("");
   const [course, setCourse] = useState("");
   const navigate = useNavigate();
-  const [gender, setGender] = useState("male"); // Default value for gender
+  const [gender, setGender] = useState("male"); 
   const [languages, setLanguages] = useState([]);
 
   function redirectToLogin() {
@@ -22,15 +26,18 @@ function Registration() {
 
   const handleLanguageChange = (language) => {
     if (languages.includes(language)) {
-      // Remove language if it already exists in the array
       setLanguages(languages.filter((lang) => lang !== language));
     } else {
-      // Add language to the array
       setLanguages([...languages, language]);
     }
   };
 
   const handleRegistration = () => {
+    if (!firstName || !lastName || !phone || !email || !password || !dob || !organization || !course || languages.length === 0) {
+      setAlertMessage('Please fill out all the fields.');
+      setShowAlert(true);
+      return;
+    }
     axios.post(`https://coursecrafterai.onrender.com/registration`, {
       firstName,
       lastName,
@@ -51,23 +58,32 @@ function Registration() {
     })
     .catch((error) => {
       if (error.response) {
-        alert("Registration Failed1: " + error.response.data.message);
+        setAlertMessage('Registration Failed: ' + error.message);
+        setShowAlert(true);
       } else if (error.request) {
-        alert("Registration Failed: No response from the server");
+        setAlertMessage('Registration Failed: Please Do After Some Time');
+        setShowAlert(true);
       } else {
-        alert("Registration Failed2: " + error.message);
+        setAlertMessage('Registration Failed:' + error.message);
+        setShowAlert(true);
       }
     });
   };
 
   return (
-    <div className='container mt-5'>
-      <div className='row justify-content-center'>
-        <div className='col-md-6 col-lg-4'>
-          <div className='registration-container'>
-            <h2 className='text-center mb-4'>Register with CourseCrafter</h2>
+    
+    <div className='login-background'>
+      <div className='navbare'>
+        <h2 className='navh2'>CourseCrafter AI</h2>
+      </div>
+      <div className='container mt-5 regis'>
+        <div className='row justify-content-center'>
+          <div className='col-md-6 p-4 rounded login-container'>
+            <h2 className='text-center mb-4 headingnav'>Register </h2>
             <div className='mb-3'>
-              <label htmlFor='firstName' className='form-label'>First Name:</label>
+              <label htmlFor='firstName' className='form-label'>
+                First Name:
+              </label>
               <input type='text' id='firstName' className='form-input' onChange={(e) => setFirstName(e.target.value)} />
             </div>
 
@@ -153,12 +169,18 @@ function Registration() {
             </div>
 
             <div className='mb-3 d-flex justify-content-center'>
-              <button className='primary-button me-2' onClick={handleRegistration}>Register</button>
-              <button className='secondary-button' onClick={redirectToLogin}>Login</button>
+              <button className='primary-button me-2' onClick={handleRegistration}>
+                Register
+              </button>
+              <button className='secondary-button' onClick={redirectToLogin}>
+                Login
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
+
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Style/Profile.css'; // Import your external CSS file for styling
 import { useAuth } from '../Auth/AuthContext'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Auth/Loading'
 
 export default function Profile() {
   const navigate = useNavigate(); // Access the navigate function
@@ -47,7 +48,7 @@ export default function Profile() {
     setIsEditing(false);
   };
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return <Loading/>;
   }
 
   if (!userData) {
