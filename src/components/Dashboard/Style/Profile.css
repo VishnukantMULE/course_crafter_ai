@@ -1,84 +1,103 @@
-/* Profile.css */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ababab;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-top: 60px;
+}
 
-/* Global Styles */
-body {
-    background-color: #f8f9fa;
-    color: #212529;
-  }
-  
-  /* Profile Container */
-  .profile-container {
-    background-color: white;
-    color: black;
-    padding: 20px;
-    border: 1px solid rgb(185, 185, 185);
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 80%;
-    text-align: center;
-  }
-  
-/* Profile Header (Profile Photo and Heading) */
 .profile-header {
-    margin-bottom: 20px;
-  }
-  
-  /* Circular Profile Photo */
-  .profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  /* Profile Heading */
-  .profile-heading {
-    color: orange;
-  }
-  
-  /* Edit and Logout Buttons */
-  .profile-actions {
-    margin-top: 20px;
-  }
-  
-  /* Orange Button */
-  .orange-button {
-    background-color: orange;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  /* Orange Button Hover Effect */
-  .orange-button:hover {
-    background-color: darkorange;
-  }
-  
-  /* Edit Input Fields */
-  .edit-input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  /* Loading Message */
-  .loading {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 20px;
-  }
-  
-  /* Error Message */
-  .error {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 20px;
-    color: red;
-  }
+  margin-bottom: 30px;
+}
+
+.profile-photo {
+  width: 100px;
+  height:100px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 20px;
+}
+.verificationimg{
+  height: 25px;
+  width: 25px;
+  margin-left: 20px;
+}
+.profileconatainer{
+  border: 1px solid rgb(199, 199, 199);  
+}
+.profile-heading {
+  border: 1px solid black;
+  background-color: rgba(255, 68, 0, 0.729);
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+}
+.profile-field {
+  margin-bottom: 15px;
+}
+
+.profile-info {
+  justify-content: center;
+  margin-bottom: 40;
+  border: 1px solid rgb(214, 214, 214);
+  padding: 20px;
+}
+
+.profile-field input {
+  width: calc(100% - 22px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+
+.profile-actions {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.orange-button {
+  background-color: rgba(255, 52, 52, 0.762);
+  color: #fff;
+  border: 1px solid black ;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.orange-button:hover {
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  border: 1px solid black ;
+
+}
+.orange-button img{
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+.error {
+  color: rgba(255, 0, 0, 0.847);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

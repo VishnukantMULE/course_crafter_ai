@@ -3,7 +3,12 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import { useAuth } from '../../Auth/AuthContext';
+
+
+
 import './style/Notes.css'
+
 
 
 const modules = {
@@ -27,7 +32,11 @@ const modules = {
 
 
 function Notes() {
+  const {userId} = useAuth();
   const [value, setValue] = useState('');
+  // const [editorValue, setEditorValue] = useState('');
+
+  
 
   const saveContent = () => {
     localStorage.setItem('content', value);
@@ -48,13 +57,43 @@ const exportPDF = () => {
 };
 
 
+
+
+const handleEditorChange = (content, delta, source, editor) => {
+  setValue(content);
+};
+
+
+const saveToBackend = () => {
+  const deltaContent = JSON.stringify(value);
+  
+  fetch('https://coursecrafterai.onrender.com/savenotes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userId, content: deltaContent }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Saved to backend:', data);
+    })
+    .catch((error) => {
+      console.error('Error saving to backend:', error);
+    });
+};
+
+
   return (
     <div className="notes">
-      <div className="editore">
-      <ReactQuill defaultValue={value} onChange={setValue} modules={modules} />
+      <div className="editor">
+        <ReactQuill value={value} onChange={handleEditorChange} modules={modules} />
       </div>
       
       <button className='buttonsave' onClick={saveContent}>Save</button>
+      <button className='buttonsave' onClick={saveToBackend}>
+        Save to Backend
+      </button>
       <button className='buttonsave' onClick={loadContent}>Load</button>
       <button className='buttonsave' onClick={exportPDF}>Export as PDF</button>
       

@@ -11,12 +11,13 @@ export default function CoursePage() {
   const { courseId } = useParams();
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
-  const [isNavbarCollapsed, setNavbarCollapsed] = useState(false); // Control the CourseNavbar visibility
+  const [isNavbarCollapsed, setNavbarCollapsed] = useState(false); 
 
   const handleChapterClick = (moduleIndex, chapterIndex, chapter) => {
     // Set the selected module, chapter number, and chapter name
     setSelectedModule(moduleIndex);
     setSelectedChapter({ chapterIndex, chapter });
+    
   };
 
   // Toggle the CourseNavbar visibility

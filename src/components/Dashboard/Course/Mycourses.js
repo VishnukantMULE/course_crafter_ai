@@ -66,11 +66,11 @@ export default function Mycourses({ userid }) {
           <div className="course-card-content">
             <img src={course.CourseImage} alt={course.courseName} className="course-image" />
             <div className="course-details">
-              <h5 className="course-name">{course.courseName}</h5>
+              <h5 className="course-names">{course.courseName}</h5>
               <p className="course-info">
                 Number of Modules: {course.numberOfModules}
                 <br />
-                <progress value={course.progress} max="100" className="progress-bar" />
+                <progress value={course.overallProgress} max="100" className="progress-bar" />
               </p>
               <div className="details-container">
                 <Link
@@ -92,7 +92,7 @@ export default function Mycourses({ userid }) {
       ))}
         </div>
       )}
-            {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
+      {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
 
     </div>
   );

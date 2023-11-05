@@ -147,21 +147,21 @@
   }
 }
 
-.btn img {
+.btnq img {
   margin-right: 8px; /* Adjust the space between icon and text */
   width: 15px; /* Set the width of the icon */
   height: 15px; /* Set the height of the icon */
 }
-.btn{
+.btnq{
   float: right;
   padding: 3px 20px;
   border: 1px solid black;
 }
-.btn:hover
+.btnq:hover
 {
   color: white;
   background-color: #000000;
 }
-.btn img:hover{
+.btnq img:hover{
   color: white;
 }

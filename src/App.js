@@ -9,35 +9,24 @@ import CoursePage from './components/Dashboard/Course/Learning/CoursePage';
 import EmailVerify from './components/Auth/EmailVerify';
 import { AuthProvider } from './components/Auth/AuthContext';
 
-
 function App() {
-
- 
-
-
   return (
     <Router>
       <AuthProvider>
-
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/course/:courseId" element={<CourseLanding />} />
-        <Route path="/coursepage/:courseId" element={<CoursePage />} />
-
-        <Route
-          path="/dashboard/"
-          element={<UserDashboard />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/course/:courseId" element={<CourseLanding />} />
+          <Route path="/coursepage/:courseId" element={<CoursePage />} />
+          <Route
+            path="/dashboard/"
+            element={<UserDashboard />}
           />
-        <Route path='/verify/:firstname' element={<EmailVerify/>}/>
-      </Routes>
-          
-          </AuthProvider>
+          <Route path='/verify/:firstname' element={<EmailVerify />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
-
 export default App;

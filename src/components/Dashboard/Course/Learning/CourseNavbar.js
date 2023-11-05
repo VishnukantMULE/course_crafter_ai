@@ -8,7 +8,7 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
   const [selectedChapter, setSelectedChapter] = useState(0);
   const [refreshKey, setRefreshKey] = useState(0);
   const [overallProgress, setOverallProgress] = useState(0);
-
+  
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -19,27 +19,48 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
         console.error('Error:', error);
       }
     };
-
+    
     fetchCourse();
+    // eslint-disable-next-line
   }, [courseId, refreshKey]);
 
-  const calculateOverallProgress = (courseData) => {
-    let totalChapters = 0;
-    let completedChapters = 0;
-
-    courseData.modules.forEach((module) => {
-      totalChapters += module.chapters.length;
-
-      if (module.completedChapters.length === module.chapters.length) {
-        completedChapters += module.chapters.length;
+  const calculateOverallProgress = async (courseData) => {
+    try {
+      let totalChapters = 0;
+      let completedChapters = 0;
+  
+      courseData.modules.forEach((module) => {
+        totalChapters += module.chapters.length;
+  
+        if (module.completedChapters.length === module.chapters.length) {
+          completedChapters += module.chapters.length;
+        } else {
+          completedChapters += module.completedChapters.length;
+        }
+      });
+  
+      const progress = (completedChapters / totalChapters) * 100;
+      setOverallProgress(progress);
+  
+      const response = await fetch('https://coursecrafterai.onrender.com/updateprogress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ courseId, overallProgress: progress }),
+      });
+  
+      if (response.ok) {
+        console.log('Overall progress updated:', progress);
       } else {
-        completedChapters += module.completedChapters.length;
+        console.error('Error updating overall progress:', response.statusText);
       }
-    });
-
-    const progress = (completedChapters / totalChapters) * 100;
-    setOverallProgress(progress);
+    } catch (error) {
+      console.error('Error updating overall progress:', error);
+    }
   };
+
+  
 
   const handleModuleClick = (index) => {
     setSelectedModule(index);
@@ -53,6 +74,7 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
     onChapterClick(moduleIndex, chapterIndex, chapter);
     setRefreshKey((oldKey) => oldKey + 1);
   };
+  
 
   return (
     <div className={`course-navbar ${isNavbarCollapsed ? 'collapsed' : ''}`}>

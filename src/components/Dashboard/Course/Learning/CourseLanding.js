@@ -51,7 +51,7 @@ export default function CourseLanding() {
         <Link to={`/coursepage/${courseId}`}>
           <button className="button">{buttonText}</button>
         </Link>
-        <button className='btn img' onClick={() => navigate('/dashboard', { state: { from: 'course-landing' }, replace: true })}>
+        <button className='btnq img' onClick={() => navigate('/dashboard', { state: { from: 'course-landing' }, replace: true })}>
           <img src={backpng} alt="back" />Home
         </button>
       </div>
