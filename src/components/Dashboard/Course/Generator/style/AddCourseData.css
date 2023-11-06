@@ -16,8 +16,7 @@
     font-size: 14px;
   }
   
-  /* AddCourseData.css */
-/* ... existing styles ... */
+
 
 .btn-primary,
 .btn-secondary,
@@ -43,22 +42,19 @@
 }
 
 
-
-/* AddCourseData.css */
-
-/* ...existing styles... */
-
-/* Adjustments for PNG buttons */
-
 .btn img {
-  margin-right: 8px; /* Adjust the space between icon and text */
-  width: 24px; /* Set the width of the icon */
-  height: 24px; /* Set the height of the icon */
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
 }
 
 .heading {
   font-size: 24px;
   margin-bottom: 20px;
 }
-
+.kandl{
+  border: 1px solid rgb(232, 232, 232);
+  padding: 10px;
+  margin-bottom: 10px;
+}
 

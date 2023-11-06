@@ -51,6 +51,7 @@ export default function Mycourses({ userid }) {
   return (
     <div className="my-courses-container">
       <h2 className="course-heading">My Courses</h2>
+      <hr />
       {isLoading ? (
         <div className="loading-container">
           <Loading/>

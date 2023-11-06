@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Course/style/DashbordNav.css';
 // import logo from '../Home/Images/Logo/Course_Crafter.png';
 import profilepng from './Style/ICONS/profile.png'
@@ -6,16 +6,22 @@ import togglepng from './Course/Learning/style/ICONS/toggle.png'
 import crosspng from './Course/Learning/style/ICONS/cross.png'
 
 export default function DashbordNav({ setSelectedOption, selectedOption }) {
+    const [isNavExpanded, setIsNavExpanded] = useState(false);
+
+
+
     const handleOptionClick = (option) => {
         setSelectedOption(option);
+        document.querySelector(".navbar-collapse").classList.remove("show");
+        setIsNavExpanded(false);
     };
-
-
-
+    const handleNavToggleClick = () => {
+        setIsNavExpanded(!isNavExpanded);
+    };
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                {/* <img src={logo} alt="" style={logoStyle} /> */}
                 <div className='comapanyname'>
 
                 CourseCrafter AI
@@ -28,8 +34,10 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                     aria-controls="navbarNav"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
+                    onClick={handleNavToggleClick}
+                    
                 >
-                     {selectedOption === 'profile' ? (
+                     {isNavExpanded ? (
             <img src={crosspng} alt="Cross Icon" className="navbar-icon" />
           ) : (
             <img src={togglepng} alt="Toggle Icon" className="navbar-icon" />

@@ -1,0 +1,95 @@
+
+.card-listr {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  .course-headingr{
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .cardr:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(5px);
+    z-index: -1;
+    transition: filter 0.3s ease;
+}
+  
+  .cardr {
+    border: 1px solid #484848;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    width: 250px;
+    text-align: left;
+    transition: all 0.3s ease;
+    height: auto;
+    filter: blur(0);
+    overflow: hidden;
+
+
+   
+  }
+  .notetitle{
+    background-color: #ff5050ba;
+  }
+  
+  .cardr:hover:before {
+    filter: blur(0); 
+}
+
+  .card-contentr {
+    max-height: 100px;
+    overflow: hidden;
+  }
+  .note-actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+
+.cardr:hover .note-actions {
+    opacity: 1;
+}
+.note-actions button {
+    padding: 8px 16px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+   
+    &:hover {
+        background-color: #ffffff;
+        color: black;
+    }
+
+   
+    &:first-child {
+        margin-right: 10px;
+    }
+}
+  
+  @media (max-width: 768px) {
+    .cardr {
+      width: 90%;
+    }
+  }
+  

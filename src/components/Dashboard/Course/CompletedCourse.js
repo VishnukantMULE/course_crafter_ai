@@ -1,137 +1,91 @@
-import React from 'react';
-import GeneratedCourse from './Generator/GeneratedCourse'
-const courseData = 
-  {
-    "step": 1,
-    "message": "Initial JSON generated successfully.",
-    "courseData": {
-        "course_name": "Web Development",
-        "modules": [
-            {
-                "module_no": 1,
-                "module_name": "HTML and CSS",
-                "chapters": [
-                    "Introduction to HTML",
-                    "HTML Basics",
-                    "HTML Tags",
-                    "HTML Attributes",
-                    "HTML Formatting"
-                ]
-            },
-            {
-                "module_no": 2,
-                "module_name": "JavaScript",
-                "chapters": [
-                    "Introduction to JavaScript",
-                    "JavaScript Basics",
-                    "JavaScript Variables",
-                    "JavaScript Functions",
-                    "JavaScript Objects"
-                ]
-            },
-            {
-                "module_no": 3,
-                "module_name": "jQuery",
-                "chapters": [
-                    "Introduction to jQuery",
-                    "jQuery Basics",
-                    "jQuery Events",
-                    "jQuery Plugins",
-                    "jQuery AJAX"
-                ]
-            },
-            {
-                "module_no": 4,
-                "module_name": "Bootstrap",
-                "chapters": [
-                    "Introduction to Bootstrap",
-                    "Bootstrap Basics",
-                    "Bootstrap Grid System",
-                    "Bootstrap Components",
-                    "Bootstrap Responsive Design"
-                ]
-            },
-            {
-                "module_no": 5,
-                "module_name": "PHP",
-                "chapters": [
-                    "Introduction to PHP",
-                    "PHP Basics",
-                    "PHP Variables",
-                    "PHP Functions",
-                    "PHP Objects"
-                ]
-            },
-            {
-                "module_no": 6,
-                "module_name": "MySQL",
-                "chapters": [
-                    "Introduction to MySQL",
-                    "MySQL Basics",
-                    "MySQL Data Types",
-                    "MySQL Tables",
-                    "MySQL Queries"
-                ]
-            },
-            {
-                "module_no": 7,
-                "module_name": "Node.js",
-                "chapters": [
-                    "Introduction to Node.js",
-                    "Node.js Basics",
-                    "Node.js Modules",
-                    "Node.js Events",
-                    "Node.js Streams"
-                ]
-            },
-            {
-                "module_no": 8,
-                "module_name": "AngularJS",
-                "chapters": [
-                    "Introduction to AngularJS",
-                    "AngularJS Basics",
-                    "AngularJS Directives",
-                    "AngularJS Services",
-                    "AngularJS Routing"
-                ]
-            },
-            {
-                "module_no": 9,
-                "module_name": "React",
-                "chapters": [
-                    "Introduction to React",
-                    "React Basics",
-                    "React Components",
-                    "React State Management",
-                    "React Hooks"
-                ]
-            },
-            {
-                "module_no": 10,
-                "module_name": "Vue.js",
-                "chapters": [
-                    "Introduction to Vue.js",
-                    "Vue.js Basics",
-                    "Vue.js Components",
-                    "Vue.js Data Binding",
-                    "Vue.js Routing"
-                ]
-            }
-        ]
+import React, { useState, useEffect } from 'react';
+import './style/mycourse.css';
+import axios from 'axios';
+import Loading from '../../Auth/Loading';
+import deletepng from './style/ICONS/delete.png';
+import { Link } from 'react-router-dom';
+
+export default function CompletedCourse({ userid }) {
+  const [completedCourses, setCompletedCourses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCompletedCourses = async () => {
+      try {
+        const response = await axios.post('https://coursecrafterai.onrender.com/completedcourses', {
+            userid: userid,
+        });
+        setCompletedCourses(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching completed courses:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchCompletedCourses();
+  }, [userid]);
+
+  const handleDeleteCourse = async (courseId) => {
+    try {
+      await axios.delete(`https://coursecrafterai.onrender.com/deletecourse`, {
+        data: {
+          courseId: courseId,
+        },
+      });
+      setCompletedCourses((prevCourses) => prevCourses.filter((course) => course._id !== courseId));
+    } catch (error) {
+      console.error('Error deleting course:', error);
     }
+  };
 
-};
-
-
-
-
-export default function CompletedCourse() {
- 
   return (
-    <div>
-
-
-      <GeneratedCourse courseData={courseData} />
+    <div className="my-courses-container">
+    <h2 className="course-heading">Completed Coursess</h2>
+    <hr />
+    <div className="completed-courses-container">
+      {isLoading ? (
+        <div className="loading-container">
+          <Loading/>
+        </div>
+      ) : completedCourses.length === 0 ? (
+        <div className="empty-courses-message">
+          <p>No completed courses available.</p>
+        </div>
+      ) : (
+        <div className="course-cards-container">
+          {completedCourses.map((course) => (
+            <div key={course._id} className="course-card">
+              <div className="course-card-content">
+                <img src={course.CourseImage} alt={course.courseName} className="course-image" />
+                <div className="course-details">
+                  <h5 className="course-names">{course.courseName}</h5>
+                  <p className="course-info">
+                    Number of Modules: {course.numberOfModules}
+                    <br />
+                    <progress value={course.overallProgress} max="100" className="progress-bar" />
+                  </p>
+                  <div className="details-container">
+                    <Link
+                      to={{
+                        pathname: `/course/${course.courseId}`,
+                        state: { courseId: course.courseId }
+                      }}
+                      className="view-details-link"
+                    >
+                      View Details
+                    </Link>
+                    <button className="delete-button" onClick={() => handleDeleteCourse(course._id)}>
+                      <img src={deletepng} alt="Delete Icon" className="delete-icon" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
+</div>
   );
 }

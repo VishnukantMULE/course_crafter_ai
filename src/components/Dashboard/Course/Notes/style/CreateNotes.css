@@ -1,0 +1,137 @@
+/* Notes.css */
+.notes {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    height: 150px;  
+  }
+  
+  .notes-buttons {
+    margin-top: 20px;
+    display: flex;
+    float: right;
+  
+    justify-content: space-around;
+  }
+  
+  .buttonsave {
+    
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buttonsave:hover {
+    background-color: #ff403d;
+  }
+  
+  .editore {
+    margin-top: 20px;
+    background-color: #f9fbee;
+    border: 1px solid #000000;
+    border-radius: 10px;
+  }
+  
+  /* Additional styles for Quill toolbar */
+  .ql-toolbar {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+  }
+  
+  .ql-toolbar button {
+    color: #333;
+  }
+  
+  
+  .notes-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .buttonsave {
+    background-color: #ff1500;
+    color: white;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    margin-right: 10px; /* Add margin to the right of each button */
+  }
+  
+  .buttonsave:last-child {
+    margin-right: 0; /* Remove margin from the last button */
+  }
+  
+  .buttonsave:hover {
+    background-color: #ff403d;
+  }
+  /* Modal Container Styles */
+  /* Modal Container Styles */
+  .modal-container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%; /* Adjust the width of the modal as needed */
+    /* height: 50%; Adjust the height of the modal as needed */
+    z-index: 999; /* Set a positive z-index value to bring the modal above other elements */
+    background-color: white; /* Set the background color of the modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    border-radius: 8px; /* Optional: Add rounded corners to the modal */
+    border: 1px solid black;
+  }
+  
+  
+  /* Modal Content Styles */
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Modal Title Styles */
+  .modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Modal Input Styles */
+  .modal-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Modal Button Styles */
+  .modal-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid black;
+  }
+  
+  .modal-button:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: 1px solid black;
+  }
+  

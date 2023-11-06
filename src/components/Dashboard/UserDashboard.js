@@ -35,7 +35,7 @@ export default function UserDashboard() {
       case 'my-learning':
         return <Mycourses userid={userId} />;
       case 'completed-courses':
-        return <CompletedCourse />;
+        return <CompletedCourse userid={userId}/>;
       case 'notes':
         return <Notes />;
       case 'profile':

@@ -26,6 +26,7 @@
     "react-draw-arrow": "^1.0.24",
     "react-konva": "^18.2.10",
     "react-markdown": "^9.0.0",
+    "react-modal": "^3.16.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "^5.0.1",

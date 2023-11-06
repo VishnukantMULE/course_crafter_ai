@@ -22,7 +22,14 @@ export default function AddCourseData({ onGoBack }) {
     const [modules, setModules] = useState([]);
     const [newModule, setNewModule] = useState('');
     const [editModule, setEditModule] = useState({ index: null, text: '' });
-    const [componentToShow, setComponentToShow] = useState('addCourseData'); // default to 'addCourseData'
+    const [componentToShow, setComponentToShow] = useState('addCourseData');
+    const [Kn_level, setKnLevel] = useState(''); // Add state variable for knowledge level
+    const [Language, setLanguage] = useState('');
+
+    const knowledgeLevels = ['Beginner Level', 'Intermediate Level', 'Professional Level', 'Advanced Level', 'Expert Level'];
+    const languages = ['English', 'Marathi', 'Hindi'];
+    const defaultKnLevel = 'Beginner Level';
+    const defaultLanguage = 'English';
 
     const handleSaveCourseName = () => {
         setIsCourseNameEditing(false);
@@ -62,6 +69,8 @@ export default function AddCourseData({ onGoBack }) {
             courseName: courseName,
             modules: modules,
             userid: userId,
+            Kn_level: Kn_level || defaultKnLevel,
+            Language: Language || defaultLanguage,
         };
         setComponentToShow('progress'); // show the progress component
 
@@ -145,25 +154,62 @@ export default function AddCourseData({ onGoBack }) {
                                 onChange={(e) => setNewModule(e.target.value)}
                             />
                             <button className="btn btn-outline-info" onClick={handleAddModule}>
-                            <img src={addpng} alt="ADD Icon" />
+                                <img src={addpng} alt="ADD Icon" />
 
                                 Add Module
                             </button>
                         </div>
                     </div>
+
+                    <div className='kandl'>
+                        
+                    <div className="mb-3">
+                        <label className="form-label">Knowledge Level:</label>
+                        <select
+                            className="form-select"
+                            value={Kn_level}
+                            onChange={(e) => setKnLevel(e.target.value)}
+                        >
+                            <option value="" disabled>Select Knowledge Level</option>
+                            {knowledgeLevels.map((level) => (
+                                <option key={level} value={level}>
+                                    {level}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">Language:</label>
+                        <select
+                            className="form-select"
+                            value={Language}
+                            onChange={(e) => setLanguage(e.target.value)}
+                            >
+                            <option value="" disabled>Select Language</option>
+                            {languages.map((language) => (
+                                <option key={language} value={language}>
+                                    {language}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                            </div>
+
+
                     <div className="d-flex justify-content-between">
                         <button className="btn btn-outline-secondary" onClick={handleGoBack}>
-                        <img src={backpng} alt="Back Icon" /> 
+                            <img src={backpng} alt="Back Icon" />
 
                             Back
                         </button>
                         <button className="btn btn-outline-danger" onClick={handleCreateCourse}>
-                            <img src={genratepng} alt="Ai PNg"  />
+                            <img src={genratepng} alt="Ai PNg" />
 
                             Create
                         </button>
                     </div>
-                    
+
                 </div>
             );
         case 'progress':
