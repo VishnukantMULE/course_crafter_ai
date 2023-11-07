@@ -3,29 +3,36 @@ import { useAuth } from '../../../Auth/AuthContext';
 import './style/ShowAllNotes.css'; 
 import Loading from '../../../Auth/Loading';
 
-const ShowAllNotes = () => {
+const ShowAllNotes = ({ onEditNote }) => {
     const { userId } = useAuth();
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        fetch('https://coursecrafterai.onrender.com/loadallnotes', {
-            method: 'POST',
-            headers: {
+        const fetchNotes = async () => {
+          try {
+            const response = await fetch('https://coursecrafterai.onrender.com/loadallnotes', {
+              method: 'POST',
+              headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ userId: userId })
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setNotes(data.notes);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching notes:', error);
-                setLoading(false); 
+              },
+              body: JSON.stringify({ userId: userId }),
             });
-    }, [userId]);
+    
+            const data = await response.json();
+            setNotes(data.notes);
+            setLoading(false);
+          } catch (error) {
+            console.error('Error fetching notes:', error);
+            setLoading(false);
+          }
+        };
+    
+        fetchNotes(); 
+        return () => {
+          };
+          // eslint-disable-next-line
+        }, []);
 
     const handleDeleteNote = (noteId) => {
         fetch('https://coursecrafterai.onrender.com/deletenote', {
@@ -49,6 +56,9 @@ const ShowAllNotes = () => {
 
 
     const handleEditNote = (noteId) => {
+        if (onEditNote) {
+            onEditNote(noteId); // Pass the noteId to the parent component for handling edit
+          }
     };
 
     const createMarkup = (content) => {

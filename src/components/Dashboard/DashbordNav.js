@@ -46,7 +46,7 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className={`nav-item ${selectedOption === 'create-course' ? 'active' : ''}`} onClick={() => handleOptionClick('create-course')}>
-                            <span className="nav-link">Create Course</span>
+                            <span className="nav-link">Generate Course</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'my-learning' ? 'active' : ''}`} onClick={() => handleOptionClick('my-learning')}>
                             <span className="nav-link">My Learning</span>

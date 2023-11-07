@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './style/GeneratedCourse.css'; // Import your custom CSS file for additional styling if needed
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './style/GeneratedCourse.css'; 
 
 export default function GeneratedCourse({ courseData }) {
   const [selectedModule, setSelectedModule] = useState(null);

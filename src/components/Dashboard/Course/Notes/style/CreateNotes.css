@@ -1,4 +1,4 @@
-/* Notes.css */
+
 .notes {
     width: 100%;
     max-width: 800px;
@@ -37,7 +37,7 @@
     border-radius: 10px;
   }
   
-  /* Additional styles for Quill toolbar */
+ 
   .ql-toolbar {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -60,73 +60,80 @@
     border: none;
     border-radius: 1px;
     cursor: pointer;
-    margin-right: 10px; /* Add margin to the right of each button */
+    margin-right: 10px;
   }
   
   .buttonsave:last-child {
-    margin-right: 0; /* Remove margin from the last button */
+    margin-right: 0;
   }
   
   .buttonsave:hover {
     background-color: #ff403d;
   }
-  /* Modal Container Styles */
-  /* Modal Container Styles */
+ 
+ 
+
+
   .modal-container {
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%; /* Adjust the width of the modal as needed */
-    /* height: 50%; Adjust the height of the modal as needed */
-    z-index: 999; /* Set a positive z-index value to bring the modal above other elements */
-    background-color: white; /* Set the background color of the modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-    border-radius: 8px; /* Optional: Add rounded corners to the modal */
+    width: 80%;
+    max-width: 400px;
+    z-index: 999;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     border: 1px solid black;
   }
   
-  
-  /* Modal Content Styles */
   .modal-content {
-    background: white;
+    flex: 1;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
-  /* Modal Title Styles */
   .modal-title {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
   }
   
-  /* Modal Input Styles */
   .modal-input {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
   }
   
-  /* Modal Button Styles */
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
   .modal-button {
+    flex: 1;
     background-color: #ff0000;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 0;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border: 1px solid black;
+    margin: 0 5px; 
   }
   
   .modal-button:hover {
@@ -135,3 +142,31 @@
     border: 1px solid black;
   }
   
+  @media only screen and (max-width: 768px) {
+    .modal-container {
+      width: 80%;
+    }
+  
+    .modal-content {
+      padding: 10px;
+    }
+  
+    .modal-title {
+      font-size: 20px;
+    }
+  
+    .modal-input {
+      font-size: 14px;
+    }
+  
+    .modal-button {
+      padding: 8px 16px;
+    }
+  }
+  
+ 
+  @media only screen and (min-width: 769px) {
+    .modal-container {
+      width: 40%;
+    }
+  }

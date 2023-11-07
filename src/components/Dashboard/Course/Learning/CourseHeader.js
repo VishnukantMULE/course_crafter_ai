@@ -1,58 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './style/CourseHeader.css'
 import crosspng from './style/ICONS/cross.png'
 import togglepng from './style/ICONS/toggle.png'
 
 export default function CourseHeader({ courseId, username, onToggleNavbar }) {
   const [courseName, setCourseName] = useState('');
-  const [progress, setProgress] = useState(0);
+  const navigate = useNavigate();
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
 
   useEffect(() => {
-    // Define a function to fetch the course name
     const fetchCourseName = async () => {
       try {
-        const response = await axios.post(`https://coursecrafterai.onrender.com/getcoursename`, {
-          courseId: courseId,
+        const response = await fetch('https://coursecrafterai.onrender.com/getcoursename', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ courseId: courseId }),
         });
-
-        // Extract the course name from the response
-        const { courseName } = response.data;
-
-        setCourseName(courseName);
+    
+        if (response.ok) {
+          const data = await response.json();
+          const { courseName } = data;
+          setCourseName(courseName);
+        } else {
+          console.error('Error fetching course name:', response.statusText);
+        }
       } catch (error) {
         console.error('Error fetching course name:', error);
       }
     };
-
-    // Define a function to fetch the user's progress
-    const fetchUserProgress = async () => {
-      try {
-        // Make an API call to fetch the user's progress based on courseId and username
-        const response = await axios.post(`https://coursecrafterai.onrender.com/getuserprogress`, {
-          courseId: courseId,
-          username: username,
-        });
-
-        // Extract the user's progress from the response
-        const userProgress = response.data.progress;
-
-        setProgress(userProgress);
-      } catch (error) {
-        console.error('Error fetching user progress:', error);
-      }
-    };
-
-    // Call both fetchCourseName and fetchUserProgress functions when the component mounts
+    
     fetchCourseName();
-    fetchUserProgress();
+    // fetchUserProgress();
   }, [courseId, username]);
   
   const handleToggleNavbar = () => {
     setIsNavbarVisible(!isNavbarVisible);
-    onToggleNavbar(); // Call the provided onToggleNavbar callback if needed
+    onToggleNavbar(); 
+  };
+  const handleGoBack = () => {
+    navigate('/dashboard');
   };
 
   return (
@@ -63,7 +53,8 @@ export default function CourseHeader({ courseId, username, onToggleNavbar }) {
         <img src={togglepng} alt="Toggle Navbar" className="navbar-icon" onClick={handleToggleNavbar} />
       )}
       <div className="course-name">{courseName}</div>
-      {progress}
+      <button className='button' onClick={handleGoBack}>Back</button>
+      
     </div>
   );
 }

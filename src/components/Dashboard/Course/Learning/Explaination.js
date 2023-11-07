@@ -7,7 +7,7 @@ import Loading from '../../../Auth/Loading';
 
 export default function Explanation({ courseId, selectedChapter, selectedModule }) {
   const [chapterData, setChapterData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // New state to handle loading state
+  const [isLoading, setIsLoading] = useState(true); 
  const updateCompletion = async (courseId, moduleNo, chapterNo) => {
         try {
             const response = await axios.post(`https://coursecrafterai.onrender.com/updateCompletionStatus`, {
@@ -21,7 +21,6 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
             if (error.response && error.response.status === 400) {
                 console.error(`Error updating chapter completion status: ${error.response.data.message}`);
                 if (error.response.data.error === "ChapterAlreadyCompleted") {
-                    // Handle the ChapterAlreadyCompleted error specifically
                     console.error('Chapter already marked as completed for this module.');
                 }
             } else {
@@ -35,14 +34,12 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
       try {
         let responseData = null;
         if (selectedChapter === null) {
-          // Handle default case for module1 and chapter1
           responseData = await axios.post(`https://coursecrafterai.onrender.com/getchapterdata`, {
             courseId,
-            moduleNumber: 1, // Default module number (module1)
-            chapterNumber: 1, // Default chapter number (chapter1)
+            moduleNumber: 1, 
+            chapterNumber: 1, 
           });
         } else {
-          // Fetch data for selected chapter
           responseData = await axios.post(`https://coursecrafterai.onrender.com/getchapterdata`, {
             courseId,
             moduleNumber: selectedModule + 1,
@@ -51,7 +48,7 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
         }
 
         setChapterData(responseData.data.chapter);
-        setIsLoading(false); // Set loading state to false after data is received
+        setIsLoading(false); 
 
         console.log('Data received from the backend:', responseData.data.chapter);
         if (responseData.data.chapter) {
@@ -82,7 +79,7 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
         </div>
       </div>
     ) : (
-      <p>Error loading chapter data.</p> // Message for error state
+      <p>Error loading chapter data.</p> 
     )}
   </div>
   );

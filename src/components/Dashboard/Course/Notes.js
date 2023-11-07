@@ -1,38 +1,45 @@
 import React, { useState } from 'react';
 import ShowAllNotes from './Notes/ShowAllNotes';
-import CreateNote from './Notes/CreateNote';
+import EditNote from './Notes/EditNote'; // Import the EditNote component
 import './style/Notes.css'; // Import the external CSS file
-
+import CreateNote from './Notes/CreateNote';
 export default function Notes() {
   const [showCreateNote, setShowCreateNote] = useState(false);
+  const [editNoteId, setEditNoteId] = useState(null);
 
   const handleCreateNoteClick = () => {
     setShowCreateNote(true);
+    setEditNoteId(null);
+  };
+
+  const handleEditNoteClick = (noteId) => {
+    setEditNoteId(noteId);
+    setShowCreateNote(false);
   };
 
   const handleCancelButtonClick = () => {
     setShowCreateNote(false);
+    setEditNoteId(null);
   };
 
   return (
     <div className="notes-containerr">
-      <div className='my-courses-container '>
-
-      <h2 className="course-headingr">Create New Notes</h2>
-      <hr />
-        <div className="btnposition">
-      <hr />
-      {!showCreateNote && (
-        <button className="create-note-button" onClick={handleCreateNoteClick}>
-          Create Note
-        </button>
+      {!showCreateNote && !editNoteId && (
+        <div className='my-courses-container '>
+          <h2 className="course-headingr">Create New Notes</h2>
+          <hr />
+          <div className="btnposition">
+            <hr />
+            <button className="create-note-button" onClick={handleCreateNoteClick}>
+              Create Note
+            </button>
+          </div>
+        </div>
       )}
-      </div>
 
-      </div>
       {showCreateNote && <CreateNote onCancel={handleCancelButtonClick} />}
-
-      {!showCreateNote && <ShowAllNotes />}
+      {editNoteId && <EditNote noteId={editNoteId} onCancel={handleCancelButtonClick} />}
+      {!showCreateNote && !editNoteId && <ShowAllNotes onEditNote={handleEditNoteClick} />}
     </div>
   );
 }

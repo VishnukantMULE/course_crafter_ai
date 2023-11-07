@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CourseHeader from './CourseHeader';
 import Explaination from './Explaination';
-import McqTest from './McqTest';
+// import McqTest from './McqTest';
 import CourseNavbar from './CourseNavbar';
 // import ModuleHeader from './ModuleHeader';
 import { useParams } from 'react-router-dom';
@@ -36,7 +36,7 @@ export default function CoursePage() {
           <div className="right-section">
             {/* <ModuleHeader courseId={courseId} className="module-header" /> */}
             <Explaination courseId={courseId} selectedChapter={selectedChapter} selectedModule={selectedModule} className="explanation" />
-            <McqTest courseId={courseId} className="mcq-test" />
+            {/* <McqTest courseId={courseId} className="mcq-test" /> */}
           </div>
         </div>
       </div>

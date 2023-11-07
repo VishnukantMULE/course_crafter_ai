@@ -20,37 +20,53 @@ export default function CreateCourse() {
 
   return (
     <>
+
+
       <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="card text-center">
-            <div className="card-body">
-              {showGenerateCourse && <AddCourseData onGoBack={() => setShowGenerateCourse(false)} />}
-              {!showGenerateCourse && !showEnglishTest && (
-                <div className="container-button">
-                  <button className="button" onClick={handleGenerateCourseClick}>
-                    + Generate Course
-                  </button>
-                  <div>
+        
+         
+          <div className="row justify-content-center">
+            <div className="card text-center">
+              <div className="card-body">
+                {showGenerateCourse && <AddCourseData onGoBack={() => setShowGenerateCourse(false)} />}
+                {!showGenerateCourse && !showEnglishTest && (
+                  <div className='my-courses-container'>
+                  <h2 className="course-headingr" >Generate A New Course </h2>
+                  <hr />
+                  <div className="container-button">
+                    <button className="button" onClick={handleGenerateCourseClick}>
+                      + Generate Course
+                    </button>
+                    <div>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                  </div>
+                )}
+              </div>
+           
           </div>
         </div>
       </div>
+
       <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="card text-center">
-            <div className="card-body">
-              {showEnglishTest && <EnglishTest onGoBack={() => setShowEnglishTest(false)} />}
-              {!showGenerateCourse && !showEnglishTest && (
-                <div className="container-button">
-                  <button className="button" onClick={handleEnglishTestClick}>
-                    + English Test
-                  </button>
-                </div>
-              )}
-            </div>
+       
+          <div className="row justify-content-center">
+            <div className="card text-center">
+              <div className="card-body">
+                {showEnglishTest && <EnglishTest onGoBack={() => setShowEnglishTest(false)} />}
+                {!showGenerateCourse && !showEnglishTest && (
+                   <div className='my-courses-container'>
+                   <h2 className="course-headingr" >Give Language Proficiency Test (English) </h2>
+                   <hr />
+                  <div className="container-button">
+                    <button className="button" onClick={handleEnglishTestClick}>
+                      + English Test
+                    </button>
+                  </div>
+                  </div>
+                )}
+              </div>
+           
           </div>
         </div>
       </div>
