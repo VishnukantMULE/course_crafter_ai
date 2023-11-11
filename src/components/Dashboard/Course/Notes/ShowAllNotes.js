@@ -51,13 +51,9 @@ const ShowAllNotes = ({ onEditNote }) => {
                 console.error('Error deleting note:', error);
             });
     };
-
-
-
-
     const handleEditNote = (noteId) => {
         if (onEditNote) {
-            onEditNote(noteId); // Pass the noteId to the parent component for handling edit
+            onEditNote(noteId); 
           }
     };
 

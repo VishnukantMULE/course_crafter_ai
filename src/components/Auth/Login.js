@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import './style/Login.css';
 import CustomAlert from '../../services/CustomAlert';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+
 
 function Login() {
   const [showAlert, setShowAlert] = useState(false);
@@ -77,6 +80,40 @@ function Login() {
               <button className='secondary-button' onClick={redirectToRegister}>
                 Sign Up
               </button>
+
+            </div>
+            <div className="glogin">
+              Or
+            </div>
+            <div className="glogin">
+
+              <GoogleLogin
+                onSuccess={credentialResponse => {
+                  // navigate('/dashboard');
+
+                  const emailauth=jwtDecode(credentialResponse.credential)
+                  const auth_email=emailauth.email;
+                  console.log(emailauth.email);
+                  axios
+                    .post(`https://coursecrafterai.onrender.com/authlogin`, { auth_email})
+                    .then((response) => {
+                      if (response.data.message === 'Authentication successful') {
+                        loginUser(response.data.userId);
+                        navigate('/dashboard');
+                      } else {
+                        alert(response.data.message);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error('Login error:', error);
+                      setAlertMessage('Login Failed: ' + error.message);
+                      setShowAlert(true);
+                    });
+                }}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+              />
             </div>
           </div>
         </div>

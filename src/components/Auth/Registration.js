@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './style/Login.css';
 import CustomAlert from '../../services/CustomAlert';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
+
 
 
 function Registration() {
@@ -17,7 +20,7 @@ function Registration() {
   const [organization, setOrganization] = useState("");
   const [course, setCourse] = useState("");
   const navigate = useNavigate();
-  const [gender, setGender] = useState("male"); 
+  const [gender, setGender] = useState("male");
   const [languages, setLanguages] = useState([]);
 
   function redirectToLogin() {
@@ -48,30 +51,30 @@ function Registration() {
       organization,
       course
     })
-    .then((response) => {
-      if (response.data.message === "User was registered successfully!") {
-        alert("Registration Successful");
-      } else {
-        alert("Registration Done : " + response.data.message);
-        navigate(`/verify/${firstName}`);
-      }
-    })
-    .catch((error) => {
-      if (error.response) {
-        setAlertMessage('Registration Failed: ' + error.message);
-        setShowAlert(true);
-      } else if (error.request) {
-        setAlertMessage('Registration Failed: Please Do After Some Time');
-        setShowAlert(true);
-      } else {
-        setAlertMessage('Registration Failed:' + error.message);
-        setShowAlert(true);
-      }
-    });
+      .then((response) => {
+        if (response.data.message === "User was registered successfully!") {
+          alert("Registration Successful");
+        } else {
+          alert("Registration Done : " + response.data.message);
+          navigate(`/verify/${firstName}`);
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          setAlertMessage('Registration Failed: ' + error.message);
+          setShowAlert(true);
+        } else if (error.request) {
+          setAlertMessage('Registration Failed: Please Do After Some Time');
+          setShowAlert(true);
+        } else {
+          setAlertMessage('Registration Failed:' + error.message);
+          setShowAlert(true);
+        }
+      });
   };
 
   return (
-    
+
     <div className='login-background'>
       <div className='navbare'>
         <h2 className='navh2'>CourseCrafter AI</h2>
@@ -98,50 +101,50 @@ function Registration() {
             </div>
 
             <div className='mb-3'>
-        <label htmlFor='gender' className='form-label'>Gender:</label>
-        <select id='gender' className='form-input' value={gender} onChange={(e) => setGender(e.target.value)}>
-          <option value='male'>Male</option>
-          <option value='female'>Female</option>
-          <option value='other'>Other</option>
-        </select>
-      </div>
+              <label htmlFor='gender' className='form-label'>Gender:</label>
+              <select id='gender' className='form-input' value={gender} onChange={(e) => setGender(e.target.value)}>
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
+                <option value='other'>Other</option>
+              </select>
+            </div>
 
-      <div className='mb-3'>
-        <label className='form-label'>Languages Spoken:</label>
-        <div className='checkbox-group'>
-          <div className='checkbox-label'>
-            <input
-              type='checkbox'
-              id='english'
-              className='checkbox-input'
-              checked={languages.includes('English')}
-              onChange={() => handleLanguageChange('English')}
-            />
-            <label htmlFor='english'>English</label>
-          </div>
-          <div className='checkbox-label'>
-            <input
-              type='checkbox'
-              id='Hindi'
-              className='checkbox-input'
-              checked={languages.includes('Hindi')}
-              onChange={() => handleLanguageChange('Hindi')}
-            />
-            <label htmlFor='Hindi'>Hindi</label>
-          </div>
-          <div className='checkbox-label'>
-            <input
-              type='checkbox'
-              id='Marathi'
-              className='checkbox-input'
-              checked={languages.includes('Marathi')}
-              onChange={() => handleLanguageChange('Marathi')}
-            />
-            <label htmlFor='Marathi'>Marathi</label>
-          </div>
-          {/* Add more languages as needed */}
-        </div>
-      </div>
+            <div className='mb-3'>
+              <label className='form-label'>Languages Spoken:</label>
+              <div className='checkbox-group'>
+                <div className='checkbox-label'>
+                  <input
+                    type='checkbox'
+                    id='english'
+                    className='checkbox-input'
+                    checked={languages.includes('English')}
+                    onChange={() => handleLanguageChange('English')}
+                  />
+                  <label htmlFor='english'>English</label>
+                </div>
+                <div className='checkbox-label'>
+                  <input
+                    type='checkbox'
+                    id='Hindi'
+                    className='checkbox-input'
+                    checked={languages.includes('Hindi')}
+                    onChange={() => handleLanguageChange('Hindi')}
+                  />
+                  <label htmlFor='Hindi'>Hindi</label>
+                </div>
+                <div className='checkbox-label'>
+                  <input
+                    type='checkbox'
+                    id='Marathi'
+                    className='checkbox-input'
+                    checked={languages.includes('Marathi')}
+                    onChange={() => handleLanguageChange('Marathi')}
+                  />
+                  <label htmlFor='Marathi'>Marathi</label>
+                </div>
+                {/* Add more languages as needed */}
+              </div>
+            </div>
 
             <div className='mb-3'>
               <label htmlFor='email' className='form-label'>Email:</label>
@@ -175,6 +178,23 @@ function Registration() {
               <button className='secondary-button' onClick={redirectToLogin}>
                 Login
               </button>
+            </div>
+              
+
+              <div className="glogin">
+              Or
+            </div>
+            <div className="glogin">
+
+            <GoogleLogin
+                onSuccess={credentialResponse => {
+                  var credentialResponsedecoded = jwtDecode(credentialResponse.credential)
+                  console.log(credentialResponsedecoded);
+                }}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+              />
             </div>
           </div>
         </div>

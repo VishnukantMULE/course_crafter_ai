@@ -59,3 +59,12 @@ body {
   .checkbox-input {
     margin-right: 5px;
   }
+
+  .glogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
+}
+  
