@@ -9,11 +9,15 @@ import CoursePage from './components/Dashboard/Course/Learning/CoursePage';
 import EmailVerify from './components/Auth/EmailVerify';
 import { AuthProvider } from './components/Auth/AuthContext';
 import AuthRegister from './components/Auth/AuthRegister';
+import AdminLogin from './Admin/Login/AdminLogin';
+import AdminDashBoard from './Admin/Dashboard/AdminDashBoard';
+import { AdminProvider } from './Admin/Login/AdminContext';
 
 function App() {
   return (
     <Router>
       <AuthProvider>
+<AdminProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -26,7 +30,11 @@ function App() {
           />
           <Route path='/verify/:firstname' element={<EmailVerify />} />
           <Route path='/authregister' element={<AuthRegister/>}/>
+
+          <Route path='/admin' element={<AdminLogin/>}/>
+          <Route path='/admindashboard' element={<AdminDashBoard/>}/>
         </Routes>
+          </AdminProvider>
       </AuthProvider>
     </Router>
   );

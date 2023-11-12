@@ -1,0 +1,22 @@
+/* AllUsers.css */
+
+.user-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .user-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 8px;
+    width: 300px; /* Adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Add more styling as needed */
+  .usernamefl{
+    background-color: black;
+    color: white;
+  }
