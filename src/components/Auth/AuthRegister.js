@@ -163,7 +163,7 @@ export default function AuthRegister() {
                             international
                             defaultCountry="IN"
                             value={formData.phone}
-                            on Change={(value) => handleChange("phone", value)}
+                            onChange={(value) => handleChange("phone", value)}
                         />
                     </div>
                     <div className="mb-3">
