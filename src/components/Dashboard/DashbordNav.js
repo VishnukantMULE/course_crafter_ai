@@ -23,8 +23,9 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <div className='comapanyname'>
-
+                 <a href="/" className='comapanyname'>
                 CourseCrafter AI
+                    </a>
                 </div>
                 <button
                     className="navbar-toggler"

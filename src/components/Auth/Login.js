@@ -22,22 +22,32 @@ function Login() {
       setShowAlert(true);
       return;
     }
+  
     axios
-      .post(`https://coursecrafterai.onrender.com/login`, { email, password })
-      .then((response) => {
-        if (response.data.message === 'Authentication successful') {
-          loginUser(response.data.userId);
-          navigate('/dashboard');
-        } else {
-          alert(response.data.message);
-        }
-      })
-      .catch((error) => {
-        console.error('Login error:', error);
-        setAlertMessage('Login Failed: ' + error.message);
+    .post(`https://coursecrafterai.onrender.com/login`, { email, password })
+    .then((response) => {
+      if (response.data.message === 'Authentication successful') {
+        loginUser(response.data.userId);
+        navigate('/dashboard');
+      } else {
+        setAlertMessage(`Login Failed: ${response.data.message}. ${response.data.reason}`);
         setShowAlert(true);
-      });
+      }
+    })
+    .catch((error) => {
+      let errorMessage = 'Login Failed: ' + error.message;
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        errorMessage = `Login Failed: ${error.response.data.message}. ${error.response.data.reason}`;
+      }
+      console.error('Login error:', error);
+      setAlertMessage(errorMessage);
+      setShowAlert(true);
+    });
+  
   };
+  
 
   const redirectToRegister = () => {
     navigate('/registration');

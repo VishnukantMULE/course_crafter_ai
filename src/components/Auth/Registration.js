@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { useNavigate } from 'react-router-dom';
 import './style/Login.css';
 import CustomAlert from '../../services/CustomAlert';
@@ -22,6 +24,10 @@ function Registration() {
   const navigate = useNavigate();
   const [gender, setGender] = useState("male");
   const [languages, setLanguages] = useState([]);
+
+
+
+
 
   function redirectToLogin() {
     navigate('/login');
@@ -96,8 +102,15 @@ function Registration() {
             </div>
 
             <div className='mb-3'>
-              <label htmlFor='phoneNumber' className='form-label'>Phone Number:</label>
-              <input type='tel' id='phoneNumber' className='form-input' onChange={(e) => setPhone(e.target.value)} />
+              <label htmlFor='phone' className='form-label'>
+                Phone Number:
+              </label>
+              <PhoneInput
+                international
+                defaultCountry='IN'
+                value={phone}
+                onChange={(value) => setPhone(value)}
+              />
             </div>
 
             <div className='mb-3'>
@@ -179,23 +192,33 @@ function Registration() {
                 Login
               </button>
             </div>
-              
 
-              <div className="glogin">
+
+            <div className="glogin">
               Or
             </div>
             <div className="glogin">
 
-            <GoogleLogin
+              <GoogleLogin
                 onSuccess={credentialResponse => {
-                  var credentialResponsedecoded = jwtDecode(credentialResponse.credential)
-                  console.log(credentialResponsedecoded);
+                  let cr = jwtDecode(credentialResponse.credential)
+                  let email = cr.email;
+                  let fname = cr.name.split(' ').slice(0, -1).join(' ');
+                  let lastName = cr.name.split(' ')[cr.name.split(' ').length - 1];
+                  console.log('First Name :' + fname);
+                  console.log('Last Name :' + lastName);
+                  console.log('Email :' + email);
+
+
+                  navigate(`/authregister?fname=${fname}&lname=${lastName}&email=${email}`);
+
                 }}
                 onError={() => {
                   console.log('Login Failed');
                 }}
               />
             </div>
+
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import CourseLanding from './components/Dashboard/Course/Learning/CourseLanding'
 import CoursePage from './components/Dashboard/Course/Learning/CoursePage';
 import EmailVerify from './components/Auth/EmailVerify';
 import { AuthProvider } from './components/Auth/AuthContext';
+import AuthRegister from './components/Auth/AuthRegister';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             element={<UserDashboard />}
           />
           <Route path='/verify/:firstname' element={<EmailVerify />} />
+          <Route path='/authregister' element={<AuthRegister/>}/>
         </Routes>
       </AuthProvider>
     </Router>
