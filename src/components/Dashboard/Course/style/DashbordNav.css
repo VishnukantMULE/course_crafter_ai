@@ -15,18 +15,24 @@
     color: #ffffff;
     margin: 0 15px; /* Add margin to the navbar items */
     display: flex;
-    align-items: center; /* Align text and icon vertically */
+    align-items: center; 
 }
 
 .navbar-nav .nav-link:hover {
     margin: 0 15px;
     color: #ffffff; /* Change text color on hover */
-    border: 0.5px solid white;
+    /* border: 0.5px solid white; */
+    border-bottom: 3px solid white;
+    transition: width 0.3s ease-in-out;
+
     background: none;
 }
 
+
+
+
 .navbar-nav .nav-item {
-    cursor: pointer; /* Change cursor style for navbar items */
+    cursor: pointer; 
 }
 
 .navbar-nav .nav-item.active {

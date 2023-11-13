@@ -1,112 +1,131 @@
-/* Login.css */
-
-body {
-    background-color: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
-  }
-  
-  .login-container {
-    background-color: #eeeeee;
-    color: #000;
-    border-radius: 10px;
-    padding: 20px;
-    /* box-shadow: 0 0 20px rgba(206, 206, 206, 0.2); */
-    border: 1px solid rgb(171, 171, 171);
-  }
-  
-  .form-input {
-    background-color: #f8f9fa;
-    color: #000;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  
-  .primary-button {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .primary-button:hover {
-    background-color: #ff0404;
-    border: 1px solid black;
-    color: #ffffff;
-  }
-  
-  .secondary-button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .secondary-button:hover {
-    background-color: #333;
-  }
-  
-  .headingnav{
-    background-color: #242424c4;
-    color: rgb(240, 240, 240);
-    border: 1px solid black;
-    font-size: 30px;
-    font-family:sans-serif;
-  }
-  .regis{
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-
-  @media (max-width: 768px) {
-    .login-container {
-      border: none; /* Remove border on mobile screens */
-      padding: 10px; /* Adjust padding for smaller screens */
-      border-style: none;
-      box-shadow: none;
-    }
-    
-    .form-input,
-    .primary-button,
-    .secondary-button {
-      margin-bottom: 10px;
-    }
-  }
-  
-  /* Navbar styles for mobile screens */
-  .navbare {
-    background-color: #000000;
-    padding: 10px 0;
-    text-align: center; /* Center the text within the navbar */
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-  }
-  
-
-  .navh2 {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    color: #fefefe;
-  }
-
-  .glogin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-
+.custom-login-background {
+  position:fixed;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url('../../Home/Images/Wallpaper/steptodown.com822532.jpg') center/cover no-repeat;
 }
+
+
+
+
+.custom-navbar {
   
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.custom-nav-h2 {
+  color: #fefefe;
+  margin: 0;
+}
+
+.custom-login-container {
+  overflow-y: hidden;
+  background-color: #ffffff36;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  max-width: 400px;
+  width: 90%;
+  margin: 80px auto 20px;
+  z-index: 999;
+}
+
+.custom-form-input {
+  background-color: #f8f9fa;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.custom-primary-button,
+.custom-secondary-button {
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.custom-primary-button {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.custom-primary-button:hover {
+  background-color: #ff0404;
+}
+
+.custom-secondary-button {
+  background-color: #000;
+  color: #fff;
+}
+
+.custom-secondary-button:hover {
+  background-color: #000000;
+}
+
+.custom-heading-nav {
+  background-color: #000000c4;
+  color: rgb(240, 240, 240);
+  border: 1px solid black;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+.custom-regis {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .custom-login-container {
+    margin-top: 90px;
+    position: relative;
+  }
+}
+
+.custom-navbare {
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.custom-navh2 {
+  color: #fefefe;
+}
+
+.custom-glogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .custom-columns {
+    width: 35%;
+    margin-top: 150px;
+  }
+}
+.custom-glogin{
+  height: 40px;
+}

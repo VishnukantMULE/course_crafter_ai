@@ -46,6 +46,8 @@ export default function AdminLogin() {
   };
 
   return (
+    <div className='authbg'>
+
 <div className='new-login-background new-admin-login'>
   <h2 className="new-admin-login-title">Hello Sir ... </h2>
   <hr />
@@ -83,6 +85,7 @@ export default function AdminLogin() {
     )}
   </form>
 </div>
+        </div>
 
   );
 }

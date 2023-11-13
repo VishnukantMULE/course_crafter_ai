@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style/Login.css";
+import "./style/Register.css"; // Updated CSS file path
 import { useLocation, useNavigate } from "react-router-dom";
 import CustomAlert from "../../services/CustomAlert";
 import axios from "axios";
@@ -7,17 +7,11 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useAuth } from './AuthContext';
 
-// eslint-disable-next-line no-unused-vars
-// import CountryFlagIcons from 'country-flag-icons';
-
 export default function AuthRegister() {
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const navigate = useNavigate();
     const { loginUser } = useAuth();
-
-
-
 
     // Access data from URL parameters
     const { search } = useLocation();
@@ -35,6 +29,7 @@ export default function AuthRegister() {
         course: "",
         phone: "",
     });
+
     const handleChange = (name, value) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -42,18 +37,10 @@ export default function AuthRegister() {
         }));
     };
 
-
     const handleRegistration = () => {
-        const { password, dob, organization, course, phone } =
-            formData;
+        const { password, dob, organization, course, phone } = formData;
 
-        if (
-            !password ||
-            !dob ||
-            !organization ||
-            !course ||
-            !phone
-        ) {
+        if (!password || !dob || !organization || !course || !phone) {
             setAlertMessage("Please fill out all the fields.");
             setShowAlert(true);
             return;
@@ -77,7 +64,6 @@ export default function AuthRegister() {
                 ) {
                     alert("Registration Successful");
                     loginUser(response.data.userId);
-
                     navigate(`/dashboard`);
                 } else {
                     alert("Registration Failed: " + response.data.message);
@@ -95,70 +81,75 @@ export default function AuthRegister() {
     };
 
     return (
-        <div className="container mt-5 regis">
-            <div className="row justify-content-center">
-                <div className="col-md-6 p-4 rounded login-container">
-                    <h2 className="text-center mb-4 headingnav">
+        <div className='custom-login-background'>
+
+        <div className="custom-container mt-5 custom-regis">
+                  <div className='custom-navbare'>
+        <h2 className='custom-navh2'>CourseCrafter AI</h2>
+      </div>
+            <div className="custom-row justify-content-center">
+                <div className="custom-col-md-6 p-4 rounded custom-register-container">
+                    <h2 className="custom-text-center mb-4 custom-heading-nav">
                         Email Successfully Verified! Please Fill the Remaining Details
                     </h2>
-                    <div className="mb-3">
-                        <label htmlFor="fname" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="fname" className="custom-form-label">
                             First Name:
-                        </label>
+                        </label> */}
                         <input
                             type="text"
                             id="fname"
                             name="fname"
-                            className="form-input"
+                            className="custom-form-input"
                             value={fname}
                             readOnly
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="lname" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="lname" className="custom-form-label">
                             Last Name:
-                        </label>
+                        </label> */}
                         <input
                             type="text"
                             id="lname"
                             name="lname"
-                            className="form-input"
+                            className="custom-form-input"
                             value={lname}
                             readOnly
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="email" className="custom-form-label">
                             Email:
-                        </label>
+                        </label> */}
                         <input
                             type="text"
                             id="email"
                             name="email"
-                            className="form-input"
+                            className="custom-form-input"
                             value={email}
                             readOnly
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="password" className="custom-form-label">
                             Set Password:
-                        </label>
+                        </label> */}
                         <input
-                            type="password"
+                        placeholder="Set Password"
+                        type="password"
                             id="password"
                             name="password"
-                            className="form-input"
+                            className="custom-form-input"
                             value={formData.password}
                             onChange={(e) => handleChange(e.target.name, e.target.value)}
-                        />
+                            />
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="phone" className="form-label">
+                    <div className="custom-mb-3">
+                        <label htmlFor="phone" className="custom-form-label">
                             Phone Number:
                         </label>
-
                         <PhoneInput
                             international
                             defaultCountry="IN"
@@ -166,30 +157,30 @@ export default function AuthRegister() {
                             onChange={(value) => handleChange("phone", value)}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="dob" className="form-label">
+                    <div className="custom-mb-3">
+                        <label htmlFor="dob" className="custom-form-label">
                             Date of Birth:
                         </label>
                         <input
                             type="date"
                             id="dob"
                             name="dob"
-                            className="form-input"
+                            className="custom-form-input"
                             value={formData.dob}
                             onChange={(e) => handleChange(e.target.name, e.target.value)}
-                        />
+                            />
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="gender" className="form-label">
+                    <div className="geneder-select">
+                        <label htmlFor="gender" className="custom-form-label">
                             Gender:
                         </label>
                         <select
                             id="gender"
                             name="gender"
-                            className="form-select"
+                            className="custom-form-select"
                             value={formData.gender}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e.target.name, e.target.value)}
                         >
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -197,41 +188,43 @@ export default function AuthRegister() {
                         </select>
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="organization" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="organization" className="custom-form-label">
                             Organization:
-                        </label>
+                        </label> */}
                         <input
+                        placeholder="Enter Organization Name"
                             type="text"
                             id="organization"
                             name="organization"
-                            className="form-input"
+                            className="custom-form-input"
                             value={formData.organization}
                             onChange={(e) => handleChange(e.target.name, e.target.value)}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="course" className="form-label">
+                    <div className="custom-mb-3">
+                        {/* <label htmlFor="course" className="custom-form-label">
                             Current Course:
-                        </label>
+                        </label> */}
                         <input
+                        placeholder="Enter Current Course"
                             type="text"
                             id="course"
                             name="course"
-                            className="form-input"
+                            className="custom-form-input"
                             value={formData.course}
                             onChange={(e) => handleChange(e.target.name, e.target.value)}
-                        />
+                            />
                     </div>
-                    <div className="mb-3 d-flex justify-content-between">
-                        <button className="secondary-button " onClick={redirectToRegister}>
+
+                    <div className="custom-mb-3 d-flex justify-content-between">
+                        <button className="custom-secondary-button" onClick={redirectToRegister}>
                             Go Back
                         </button>
-                        <button className='primary-button' onClick={handleRegistration}>
+                        <button className='custom-primary-button' onClick={handleRegistration}>
                             Submit
                         </button>
                     </div>
-
                 </div>
             </div>
             {showAlert && (
@@ -241,5 +234,6 @@ export default function AuthRegister() {
                 />
             )}
         </div>
+                </div>
     );
 }

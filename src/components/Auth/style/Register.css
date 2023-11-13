@@ -1,70 +1,124 @@
-/* Register.css */
+/* Registration.css */
 
-body {
-    background-color: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
-  }
-  
-
-  .form-input {
-    background-color: #f8f9fa;
-    color: #000;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  
-  .primary-button {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .primary-button:hover {
-    background-color: #cc0000;
-  }
-  
-  .secondary-button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .secondary-button:hover {
-    background-color: #333;
-  }
-  .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .checkbox-input {
-    margin-right: 5px;
-  }
-
-  .glogin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-
+.custom-navbar {
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
-  
+
+.custom-nav-h2 {
+  color: #fefefe;
+  margin: 0;
+}
+
+.custom-register-container {
+  overflow-y: hidden;
+  background-color: #ffffff45;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  max-width: 450px;
+  width: 90%;
+  margin: 25px auto 20px;
+  z-index: 999;
+}
+.geneder-select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem; /* Adjust the margin-bottom value as needed */
+}
+
+.geneder-select label {
+  margin-right: 1rem; /* Adjust the margin-right value as needed */
+}
+.custom-form-input {
+  background-color: #f8f9fa;
+  color: #000;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.custom-primary-button,
+.custom-secondary-button {
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.custom-primary-button {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.custom-primary-button:hover {
+  background-color: #ff0404;
+}
+
+.custom-secondary-button {
+  background-color: #000;
+  color: #fff;
+}
+
+.custom-secondary-button:hover {
+  background-color: #000000;
+}
+
+.custom-heading-nav {
+  background-color: #000000c4;
+  color: rgb(240, 240, 240);
+  border: 1px solid black;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+.custom-regis {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .custom-register-container {
+    width: 100%;
+    margin-top: 25px;
+    position: relative;
+  }
+}
+
+.custom-navbare {
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.custom-navh2 {
+  color: #fefefe;
+}
+
+.custom-glogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .custom-columns {
+    width: 35%;
+    margin-top: 150px;
+  }
+}

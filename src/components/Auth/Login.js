@@ -6,7 +6,7 @@ import './style/Login.css';
 import CustomAlert from '../../services/CustomAlert';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-
+// import bgimage from '../Home/Images/Wallpaper/steptodown.com282175.jpg'
 
 function Login() {
   const [showAlert, setShowAlert] = useState(false);
@@ -22,90 +22,78 @@ function Login() {
       setShowAlert(true);
       return;
     }
-  
-    axios
-    .post(`https://coursecrafterai.onrender.com/login`, { email, password })
-    .then((response) => {
-      if (response.data.message === 'Authentication successful') {
-        loginUser(response.data.userId);
-        navigate('/dashboard');
-      } else {
-        setAlertMessage(`Login Failed: ${response.data.message}. ${response.data.reason}`);
-        setShowAlert(true);
-      }
-    })
-    .catch((error) => {
-      let errorMessage = 'Login Failed: ' + error.message;
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        errorMessage = `Login Failed: ${error.response.data.message}. ${error.response.data.reason}`;
-      }
-      console.error('Login error:', error);
-      setAlertMessage(errorMessage);
-      setShowAlert(true);
-    });
-  
-  };
-  
+    setAlertMessage(  " If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊"
+    )
 
-  const redirectToRegister = () => {
-    navigate('/registration');
+    axios
+      .post(`https://coursecrafterai.onrender.com/login`, { email, password })
+      .then((response) => {
+        if (response.data.message === 'Authentication successful') {
+          loginUser(response.data.userId);
+          navigate('/dashboard');
+        } else {
+          setAlertMessage(`Login Failed: ${response.data.message}. ${response.data.reason}`);
+          setShowAlert(true);
+        }
+      })
+      .catch((error) => {
+        let errorMessage = 'Login Failed: ' + error.message;
+        if (error.response) {
+          errorMessage = `Login Failed: ${error.response.data.message}. ${error.response.data.reason}`;
+        }
+        console.error('Login error:', error);
+        setAlertMessage(errorMessage);
+        setShowAlert(true);
+      });
   };
 
   return (
-    <div className='login-background'>
-      <div className="navbare">
-        <h2 className='navh2'>CourseCrafter AI</h2>
+    <div className='custom-login-background' >
+      <div className="custom-navbar">
+        <h2 className='custom-nav-h2'>CourseCrafter AI</h2>
       </div>
-      <div className='container'>
-        <div className='row justify-content-center align-items-center min-vh-100'>
-          <div className='col-md-6 p-4 rounded login-container'>
-            <h2 className='text-center mb-4 headingnav'>Login</h2>
+      <div className='custom-container'>
+        <div className='custom-row justify-content-center align-items-center min-vh-100'>
+          <div className='custom-columns p-4 rounded custom-login-container'>
+            <h2  className='text-center mb-4 custom-heading-nav'>Login</h2>
             <br />
-            {/* <h3
-            <br /> className='text-center mb-4'>Login</h3> */}
-            <div className='mb-3'>
+            <div className='custom-mb-3'>
               <input
                 type='text'
-                className='form-input'
+                className='custom-form-input'
                 placeholder='Email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className='mb-3'>
+            <div className='custom-mb-3'>
               <input
                 type='password'
-                className='form-input'
+                className='custom-form-input'
                 placeholder='Password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className='mb-3 d-flex justify-content-center'>
-              <button className='primary-button me-2' onClick={handleLogin}>
+            <div className='custom-mb-3 d-flex justify-content-center'>
+              <button className='custom-primary-button me-2' onClick={handleLogin}>
                 Login
               </button>
-              <button className='secondary-button' onClick={redirectToRegister}>
-                Sign Up
-              </button>
-
             </div>
-            <div className="glogin">
+            <div className="custom-glogin">
+              <p>Don't have an account? Please <a href="/registration">Register</a></p>
+            </div>
+            <div className="custom-glogin">
               Or
             </div>
-            <div className="glogin">
-
+            <div className="custom-glogin">
               <GoogleLogin
                 onSuccess={credentialResponse => {
-                  // navigate('/dashboard');
-
-                  const emailauth=jwtDecode(credentialResponse.credential)
-                  const auth_email=emailauth.email;
+                  const emailauth = jwtDecode(credentialResponse.credential);
+                  const auth_email = emailauth.email;
                   console.log(emailauth.email);
                   axios
-                    .post(`https://coursecrafterai.onrender.com/authlogin`, { auth_email})
+                    .post(`https://coursecrafterai.onrender.com/authlogin`, { auth_email })
                     .then((response) => {
                       if (response.data.message === 'Authentication successful') {
                         loginUser(response.data.userId);
@@ -129,7 +117,6 @@ function Login() {
         </div>
       </div>
       {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
-
     </div>
   );
 }

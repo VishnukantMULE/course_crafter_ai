@@ -39,13 +39,16 @@
 
 .navbar-brand .brand-text {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
 }
 
 .navbar-nav .nav-link {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin: 0 15px;
     transition: 0.3s;
+    /* align-items:flex-end;  */
+
 }
 
 .navbar-nav .nav-link:hover {
@@ -127,11 +130,17 @@ h1 {
     0% {
         color: #fcfcfc; /* Start color */
     }
-    50% {
-        color: #ff0000; /* Middle color */
+    30% {
+        color: #ff4646; /* Middle color */
+    }
+    60% {
+        color: rgb(255, 47, 47); /* End color */
+    }
+    90% {
+        color: #000000; /* End color */
     }
     100% {
-        color: #000000; /* End color */
+        color: #fafafa; /* End color */
     }
 }
 
@@ -193,4 +202,4 @@ h1 {
       margin: 0 10px;
     }
   }
-  
+

@@ -1,30 +1,38 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import bgvideo from './Videos/backgroundvideo.mp4'
-import './style/Home.css'
-import crosspng from '../Dashboard/Course/Learning/style/ICONS/cross.png'
-import togglepng from '../Dashboard/Course/Learning/style/ICONS/toggle.png'
-// import logo from './Images/Logo/Course_Crafter.png'
+import './style/Home.css';
+import { useInView } from 'react-intersection-observer';
 
-import generatorpng from '../Home/Images/Logo/generator.png'
-import interactivepng from '../Home/Images/Logo/interactive.png'
-import personalisepng from '../Home/Images/Logo/personalise.png'
-import progresspng from '../Home/Images/Logo/progress.png'
-import wallpaper from './Images/Wallpaper/steptodown.com213485.jpg'
-// import wallpaper from './Images/Wallpaper/7xm.xyz322846.jpg'
+import crosspng from '../Dashboard/Course/Learning/style/ICONS/cross.png';
+import togglepng from '../Dashboard/Course/Learning/style/ICONS/toggle.png';
 
-// import wallpaper from './Images/Wallpaper/steptodown.com282175.jpg'
-
+import generatorpng from '../Home/Images/Logo/generator.png';
+import interactivepng from '../Home/Images/Logo/interactive.png';
+import personalisepng from '../Home/Images/Logo/personalise.png';
+import progresspng from '../Home/Images/Logo/progress.png';
+import wallpaper from './Images/Wallpaper/steptodown.com213485.jpg';
 
 export default function Home() {
   const [isToggled, setIsToggled] = useState(false);
 
+  const [footerRef, footerInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [navbarRef, navbarInView] = useInView({
+    triggerOnce: true,
+  });
+
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
+
   return (
     <div className="homepage">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+    <nav
+      ref={navbarRef}
+      className={`navbar navbar-expand-lg navbar-dark bg-black ${navbarInView ? 'animate__animated animate__fadeInDown' : ''}`}
+    >
         <div className="container">
           <Link className="navbar-brand" to="/">
             {/* <img src={logo} alt="Logo" width="30" height="30" className="mr-2" /> */}
@@ -75,7 +83,9 @@ export default function Home() {
             Welcome To CourseCrafterAI
           </h1>
           <p>Your personalized learning experience</p>
+
         </div>
+        
 
 
       </div>
@@ -117,7 +127,10 @@ export default function Home() {
 
       <br />
       <hr />
-      <footer className="bg-black text-white text-center py-5">
+      <footer
+        ref={footerRef}
+        className={`bg-black text-white text-center py-5 ${footerInView ? 'animate__animated animate__fadeInUp' : ''}`}
+      >
         <div className="container">
           {/* <h4>About Me</h4>
           <p>Vishnukant Mule       :     India</p> */}

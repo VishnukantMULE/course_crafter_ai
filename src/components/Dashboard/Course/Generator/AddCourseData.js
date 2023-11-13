@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style/AddCourseData.css';
+import socketIOClient from 'socket.io-client';
+
 
 
 import Axios from 'axios';
@@ -16,6 +18,8 @@ import { useAuth } from '../../../Auth/AuthContext';
 export default function AddCourseData({ onGoBack }) {
     const { userId } = useAuth();
 
+    const [progress, setProgress] = useState(0);
+    const [message, setMessage] = useState('');
 
     const [courseName, setCourseName] = useState('');
     const [isCourseNameEditing, setIsCourseNameEditing] = useState(true);
@@ -63,6 +67,33 @@ export default function AddCourseData({ onGoBack }) {
     };
     const [generatedCourseData, setGeneratedCourseData] = useState(null);
 
+    const [socket, setSocket] = useState(null);
+
+    useEffect(() => {
+        const newSocket = socketIOClient('https://coursecrafterai.onrender.com');
+        setSocket(newSocket);
+    
+        return () => {
+            newSocket.disconnect();
+        };
+    }, []);
+    
+    useEffect(() => {
+        if (socket) {
+            // Listen for progress events
+            socket.on('progressUpdate', (data) => {
+                setProgress((prevProgress) => prevProgress + 20); // Assuming 5 steps, adjust accordingly
+                setMessage(data.message);
+            });
+        }
+    
+        return () => {
+            // Disconnect the socket when the component unmounts
+            if (socket) {
+                socket.disconnect();
+            }
+        };
+    }, [socket]);
 
     const handleCreateCourse = () => {
         const data = {
@@ -162,39 +193,39 @@ export default function AddCourseData({ onGoBack }) {
                     </div>
 
                     <div className='kandl'>
-                        
-                    <div className="mb-3">
-                        <label className="form-label">Knowledge Level:</label>
-                        <select
-                            className="form-select"
-                            value={Kn_level}
-                            onChange={(e) => setKnLevel(e.target.value)}
-                        >
-                            <option value="" disabled>Select Knowledge Level</option>
-                            {knowledgeLevels.map((level) => (
-                                <option key={level} value={level}>
-                                    {level}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
 
-                    <div className="mb-3">
-                        <label className="form-label">Language:</label>
-                        <select
-                            className="form-select"
-                            value={Language}
-                            onChange={(e) => setLanguage(e.target.value)}
+                        <div className="mb-3">
+                            <label className="form-label">Knowledge Level:</label>
+                            <select
+                                className="form-select"
+                                value={Kn_level}
+                                onChange={(e) => setKnLevel(e.target.value)}
                             >
-                            <option value="" disabled>Select Language</option>
-                            {languages.map((language) => (
-                                <option key={language} value={language}>
-                                    {language}
-                                </option>
-                            ))}
-                        </select>
+                                <option value="" disabled>Select Knowledge Level</option>
+                                {knowledgeLevels.map((level) => (
+                                    <option key={level} value={level}>
+                                        {level}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="mb-3">
+                            <label className="form-label">Language:</label>
+                            <select
+                                className="form-select"
+                                value={Language}
+                                onChange={(e) => setLanguage(e.target.value)}
+                            >
+                                <option value="" disabled>Select Language</option>
+                                {languages.map((language) => (
+                                    <option key={language} value={language}>
+                                        {language}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
-                            </div>
 
 
                     <div className="d-flex justify-content-between">
@@ -213,7 +244,7 @@ export default function AddCourseData({ onGoBack }) {
                 </div>
             );
         case 'progress':
-            return <Progress />;
+            return <Progress progress={progress} message={message} />;
         case 'generatedCourse':
             return <GeneratedCourse onGoBack={handleGoBack} courseData={generatedCourseData} />;
         default:
