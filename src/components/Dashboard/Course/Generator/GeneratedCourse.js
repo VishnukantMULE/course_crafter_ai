@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './style/GeneratedCourse.css'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function GeneratedCourse({ courseData }) {
   const [selectedModule, setSelectedModule] = useState(null);
+  const navigate = useNavigate(); 
+
 
   const handleModuleClick = (moduleNo) => {
     if (selectedModule === moduleNo) {
@@ -13,8 +16,15 @@ export default function GeneratedCourse({ courseData }) {
     }
   };
 
+  const handleStartCourseClick = () => {
+    navigate.push(`/coursepage/${courseData.CourseLink}`);
+  }
+
   return (
     <div className="container mt-4">
+      <div>
+      <button className='button' onClick={handleStartCourseClick}>Start Course</button>
+      </div>
       <h2 className="mb-4">{courseData.courseData.course_name}</h2>
       {courseData.courseData.modules.map((module) => (
         <div className="module-container mb-3" key={module.module_no}>

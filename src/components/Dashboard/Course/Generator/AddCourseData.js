@@ -80,15 +80,13 @@ export default function AddCourseData({ onGoBack }) {
     
     useEffect(() => {
         if (socket) {
-            // Listen for progress events
             socket.on('progressUpdate', (data) => {
-                setProgress((prevProgress) => prevProgress + 20); // Assuming 5 steps, adjust accordingly
+                setProgress((prevProgress) => prevProgress + 16.66); 
                 setMessage(data.message);
             });
         }
     
         return () => {
-            // Disconnect the socket when the component unmounts
             if (socket) {
                 socket.disconnect();
             }
@@ -107,9 +105,10 @@ export default function AddCourseData({ onGoBack }) {
 
         Axios.post(`https://coursecrafterai.onrender.com/api/saveCourseData`, data)
             .then((response) => {
-                setGeneratedCourseData(response.data); // Store the API response in state
+                setGeneratedCourseData(response.data); 
+                setComponentToShow('generatedCourse'); 
+                console.log(response.data)
 
-                setComponentToShow('generatedCourse'); // show the generated course component
                 alert('Course Created Successfully', response.data);
             })
             .catch((error) => {
