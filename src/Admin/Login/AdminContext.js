@@ -1,5 +1,4 @@
-// AdminContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AdminContext = createContext();
 
@@ -12,14 +11,26 @@ export const useAdminContext = () => {
 };
 
 export const AdminProvider = ({ children }) => {
-  const [adminToken, setAdminToken] = useState(null);
+  const [adminToken, setAdminToken] = useState(() => {
+    const storedToken = localStorage.getItem('adminToken');
+    return storedToken ? storedToken : null;
+  });
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('adminToken');
+    if (storedToken && !adminToken) {
+      setAdminToken(storedToken);
+    }
+  }, [adminToken]);
 
   const setToken = (token) => {
     setAdminToken(token);
+    localStorage.setItem('adminToken', token);
   };
 
   const logout = () => {
     setAdminToken(null);
+    localStorage.removeItem('adminToken');
   };
 
   const value = { adminToken, setToken, logout };
