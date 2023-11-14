@@ -30,3 +30,44 @@
     margin-bottom: 1vh;
 }
 
+
+.updated-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+  }
+  
+  .updated-row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .updated-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px; /* You can adjust the width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .updated-card-body {
+    padding: 20px;
+  }
+  
+  .your-updated-class-name {
+    /* Add your styles for this class */
+  }
+  
+  h2.your-updated-class-name {
+    /* Add your styles for this specific h2 element */
+  }
+  
+  .updated-container-button {
+    margin-top: 20px;
+  }
+  
+
+  
+  /* Add any additional styles as needed */
+  

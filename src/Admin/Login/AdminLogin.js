@@ -29,7 +29,7 @@ export default function AdminLogin() {
         if (data.success) {
           console.log("Success:", data.message);
           setToken(data.token);
-          console.log("Token Get is :"+data.token)
+          console.log("Token Get is :" + data.token);
 
           navigate("/admindashboard");
         } else {
@@ -52,6 +52,7 @@ export default function AdminLogin() {
           <label>
             ID:
             <input
+              className="inputforadmin"
               type="text"
               placeholder="Enter Id"
               value={id}
@@ -62,6 +63,7 @@ export default function AdminLogin() {
           <label>
             Password:
             <input
+              className="inputforadmin"
               type="password"
               placeholder="Enter Password"
               value={password}

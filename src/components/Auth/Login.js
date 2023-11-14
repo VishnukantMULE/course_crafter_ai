@@ -87,7 +87,9 @@ function Login() {
               Or
             </div>
             <div className="custom-glogin">
+              
               <GoogleLogin
+              buttonText="continue_with"
                 onSuccess={credentialResponse => {
                   const emailauth = jwtDecode(credentialResponse.credential);
                   const auth_email = emailauth.email;

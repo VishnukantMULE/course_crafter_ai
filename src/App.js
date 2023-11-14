@@ -12,29 +12,37 @@ import AuthRegister from './components/Auth/AuthRegister';
 import AdminLogin from './Admin/Login/AdminLogin';
 import AdminDashBoard from './Admin/Dashboard/AdminDashBoard';
 import { AdminProvider } from './Admin/Login/AdminContext';
+import ProtectedRoute from './components/Auth/ProtectedRoute ';
+import EnglishTestDash from './components/Dashboard/Course/Test/EnglishTestDash';
+
 
 function App() {
   return (
     <Router>
       <AuthProvider>
-<AdminProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/course/:courseId" element={<CourseLanding />} />
-          <Route path="/coursepage/:courseId" element={<CoursePage />} />
-          <Route
-            path="/dashboard/"
-            element={<UserDashboard />}
-          />
-          <Route path='/verify/:firstname' element={<EmailVerify />} />
-          <Route path='/authregister' element={<AuthRegister/>}/>
+        <AdminProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/course/:courseId" element={<CourseLanding />} />
+            <Route path="/coursepage/:courseId" element={<CoursePage />} />
+            <Route
+              path="/dashboard/"
+              element={
+                <ProtectedRoute>
+                  <UserDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path='/verify/:firstname' element={<EmailVerify />} />
+            <Route path='/authregister' element={<AuthRegister />} />
 
-          <Route path='/admin' element={<AdminLogin/>}/>
-          <Route path='/admindashboard' element={<AdminDashBoard/>}/>
-        </Routes>
-          </AdminProvider>
+            <Route path='/admin' element={<AdminLogin />} />
+            <Route path='/admindashboard' element={<AdminDashBoard />} />
+            <Route path='/englishtest' element={<EnglishTestDash />} />
+          </Routes>
+        </AdminProvider>
       </AuthProvider>
     </Router>
   );

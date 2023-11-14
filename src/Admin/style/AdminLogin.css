@@ -7,8 +7,8 @@
   margin: 50px auto;
   box-shadow: 0 0 10px rgba(148, 148, 148, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.397);
- 
-  position: relative; /* Add position relative to contain absolute positioning of child elements */
+
+  position: relative;
 }
 .authbg {
   top: 0;
@@ -16,90 +16,89 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  position: absolute; /* Position the background image absolutely within the .new-login-background */
-  background: url('../../components/Home/Images/Wallpaper/7xm.xyz199338.jpg') center/cover no-repeat;
+  position: absolute;
+  background: url("../../components/Home/Images/Wallpaper/7xm.xyz199338.jpg")
+    center/cover no-repeat;
 }
 
+.new-admin-login-title {
+  color: #fff;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
-  
-  .new-admin-login-title {
-    color: #fff;
-    background-color: rgb(0, 0, 0); /* Redesigned title background */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px; /* Slightly increased padding for better input appearance */
-    margin-bottom: 15px; /* Increased margin for better spacing */
-    box-sizing: border-box;
-  }
-  
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.inputforadmin {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.buttonw {
+  background-color: rgb(244, 66, 66);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.buttonw:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.new-alert-container {
+  background-color: #ffe8e8;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.new-admin-alert {
+  color: #721c24;
+}
+
+.new-alert-message {
+  margin: 0;
+}
+
+.new-alert-close-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.new-alert-close-button:hover {
+  background-color: #c82333;
+}
+
+.para {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
   .buttonw {
-    background-color: rgb(244, 66, 66);
-    color: #fff;
-    padding: 12px; /* Slightly increased padding for better button appearance */
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .buttonw:hover {
-    background-color: #000000;
-    color: white;
-  }
-  
-  .new-alert-container {
-    background-color: #ffe8e8;
-    padding: 15px; /* Increased padding for better alert appearance */
-    border-radius: 5px;
-    margin-top: 20px;
-  }
-  
-  .new-admin-alert {
-    color: #721c24;
-  }
-  
-  .new-alert-message {
-    margin: 0;
-  }
-  
-  .new-alert-close-button {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px; /* Increased margin for better spacing */
     padding: 10px;
   }
-  
-  .new-alert-close-button:hover {
-    background-color: #c82333;
-  }
-  
-  .para {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .buttonw {
-      padding: 10px; /* Adjusted padding for smaller screens */
-    }
-  }
+}

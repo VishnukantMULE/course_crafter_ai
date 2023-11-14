@@ -1,0 +1,91 @@
+.english-test-container {
+    text-align: center;
+    padding: 20px;
+  }
+  .testtitle{
+    background-color: #000000bc;
+    color: rgb(255, 255, 255);
+  }
+
+  .instruction-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .instruction-page p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .instruction-page ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+  }
+  
+  .instruction-page ul li:before {
+    content: "\2022"; /* Bullet point */
+    color: #4CAF50; /* Green color */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
+  .terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+  
+  .terms-checkbox input {
+    margin-right: 8px;
+  }
+  
+  .ready-to-test-button {
+    padding: 10px 15px;
+    background-color: rgb(53, 240, 1); 
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .ready-to-test-button:hover {
+    padding: 10px 15px;
+    background-color: rgb(255, 70, 24); 
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ready-to-test-button:disabled {
+    background-color: #cccccc; 
+    border: 1px solid black;
+    cursor: not-allowed;
+  }
+
+  
+  
+  .test-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .btns {
+    padding: 10px 15px;
+    background-color: #ff0000; 
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btns:hover{
+    background-color: #ff0000;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
