@@ -102,7 +102,7 @@ export default function CourseLanding() {
                     ))}
 
                     {module.mcqs && module.mcqs.toLowerCase() === 'mcq test' && (
-                      <Link to={`/mcqtest/${courseId}/${index}`}>
+                      <Link to={`/mcqtest/${courseId}/${index+1}`}>
                         <button className="mcq-button">MCQ Test</button>
                       </Link>
                     )}

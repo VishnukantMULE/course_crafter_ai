@@ -18,8 +18,11 @@ import { useAuth } from '../../../Auth/AuthContext';
 export default function AddCourseData({ onGoBack }) {
     const { userId } = useAuth();
 
-    const [progress, setProgress] = useState(0);
-    const [message, setMessage] = useState('');
+    const [progressData, setProgressData] = useState({
+        progress: 0,
+        message: '',
+        error: null,
+    });
 
     const [courseName, setCourseName] = useState('');
     const [isCourseNameEditing, setIsCourseNameEditing] = useState(true);
@@ -27,7 +30,7 @@ export default function AddCourseData({ onGoBack }) {
     const [newModule, setNewModule] = useState('');
     const [editModule, setEditModule] = useState({ index: null, text: '' });
     const [componentToShow, setComponentToShow] = useState('addCourseData');
-    const [Kn_level, setKnLevel] = useState(''); // Add state variable for knowledge level
+    const [Kn_level, setKnLevel] = useState(''); 
     const [Language, setLanguage] = useState('');
 
     const knowledgeLevels = ['Beginner Level', 'Intermediate Level', 'Professional Level', 'Advanced Level', 'Expert Level'];
@@ -81,8 +84,19 @@ export default function AddCourseData({ onGoBack }) {
     useEffect(() => {
         if (socket) {
             socket.on('progressUpdate', (data) => {
-                setProgress((prevProgress) => prevProgress + 16.66); 
-                setMessage(data.message);
+                setProgressData((prevData) => ({
+                    ...prevData,
+                    progress: prevData.progress + 16.66,
+                    message: data.message,
+                    error: null, 
+                }));
+            });
+    
+            socket.on('error', (errorData) => {
+                setProgressData((prevData) => ({
+                    ...prevData,
+                    error: errorData.message,
+                }));
             });
         }
     
@@ -101,7 +115,7 @@ export default function AddCourseData({ onGoBack }) {
             Kn_level: Kn_level || defaultKnLevel,
             Language: Language || defaultLanguage,
         };
-        setComponentToShow('progress'); // show the progress component
+        setComponentToShow('progress'); 
 
         Axios.post(`https://coursecrafterai.onrender.com/api/saveCourseData`, data)
             .then((response) => {
@@ -112,7 +126,7 @@ export default function AddCourseData({ onGoBack }) {
                 alert('Course Created Successfully', response.data);
             })
             .catch((error) => {
-                setComponentToShow('addCourseData'); // show the add course data component
+                setComponentToShow('addCourseData'); 
                 alert('Error in creating course', error);
             });
     };
@@ -243,7 +257,8 @@ export default function AddCourseData({ onGoBack }) {
                 </div>
             );
         case 'progress':
-            return <Progress progress={progress} message={message} />;
+            return <Progress progressData={progressData} />
+
         case 'generatedCourse':
             return <GeneratedCourse onGoBack={handleGoBack} courseData={generatedCourseData} />;
         default:

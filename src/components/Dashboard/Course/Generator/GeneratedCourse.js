@@ -17,7 +17,7 @@ export default function GeneratedCourse({ courseData }) {
   };
 
   const handleStartCourseClick = () => {
-    navigate.push(`/coursepage/${courseData.CourseLink}`);
+    navigate(`/coursepage/${courseData.CourseLink}`);
   }
 
   return (
