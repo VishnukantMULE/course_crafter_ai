@@ -95,7 +95,6 @@ export default function CreateCourse() {
                 <h2 className="your-updated-class-name">Check Knowledge Level </h2>
                 <label htmlFor="subject">Enter Subject:</label>
                 <input type="text" id="subject" name="subject" />
-                {/* add a check button below */}
                 <br></br>
                 <div className="updated-container-button text-center">
                   <button className="button">Check</button>
@@ -105,8 +104,6 @@ export default function CreateCourse() {
           </div>
         </div>
       )}
-
-
 
       {showComponent === "english" && (
         <English onGoBack={() => setShowComponent("")} />
