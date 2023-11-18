@@ -34,6 +34,7 @@ export default function CreateCourse() {
 
   return (
     <>
+
       {showComponent === "" && (
         <div className="container mt-5">
           <div className="row justify-content-center">
@@ -67,8 +68,9 @@ export default function CreateCourse() {
                 <div className="your-updated-class-name">
                   {englishScore !== null ? (
                     <>
-                    <h2>Your English score is: {englishScore}/100</h2>
-                    <div className="updated-container-button">
+                      <h2>Your English score is: {englishScore}/100</h2>
+                      <div className="updated-container-button">
+
                         <button className="button" onClick={handleEnglishClick}>
                           + Retake English Test
                         </button>
@@ -87,12 +89,24 @@ export default function CreateCourse() {
                     </>
                   )}
                 </div>
+                
               </div>
             </div>
+            <div className="updated-card-body"> 
+            <h2 className="your-updated-class-name">Check Knowledge Level </h2>
+                  <label htmlFor="subject">Enter Subject:</label>
+                  <input type="text" id="subject" name="subject" />
+                  {/* add a check button below */}
+                 <br></br>
+                  <div className="updated-container-button text-center">
+                    <button className="button">Check</button>
+                  </div>
+                  </div>
           </div>
         </div>
-
       )}
+
+
 
       {showComponent === "english" && (
         <English onGoBack={() => setShowComponent("")} />
