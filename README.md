@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# CourseCrafter AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CourseCrafter AI is a generative AI website that allows users to generate courses for learning anything. It leverages the power of the Google Palm model and the Google YouTube API to fetch videos and generate a structured course similar to platforms like Udemy. Each topic in the generated course includes videos along with text in Markdown format.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will guide you on how to set up and run the CourseCrafter AI project on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before getting started, make sure you have the following software installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- MongoDB
+- Node.js
+- Google Palm Model
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+Follow these steps to get the development environment up and running:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    git clone https://github.com/VishnukantMULE/course_crafter_ai.git
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install the required Node.js dependencies:
 
-### `npm run eject`
+    ```bash
+    npm install
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    npm start
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Access the CourseCrafter AI website in your web browser at `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running the Tests
 
-## Learn More
+To run the automated tests for this system, follow these steps:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Ensure that the development server is running.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Execute the following command:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```bash
+    npm test
+    ```
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To deploy CourseCrafter AI on a live system, follow these steps:
 
-### `npm run build` fails to minify
+1. Set up a production-ready server environment.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. Build the production-ready assets:
+
+    ```bash
+    npm run build
+    ```
+
+3. Configure the necessary environment variables for production.
+
+4. Start the production server:
+
+    ```bash
+    npm run start:prod
+    ```
+
+## Built With
+
+CourseCrafter AI is built with the following technologies:
+
+- [React](https://react.dev/) - JavaScript library used for the frontend.
+- [Node.js](https://nodejs.org/) - JavaScript runtime used for the frontend.
+- [MongoDB](https://www.mongodb.com/) - NoSQL database used for data storage.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to CourseCrafter AI and the code of conduct for contributors.
+
+
+## Authors
+
+- **Vishnukant Mule** - [Github](https://github.com/VishnukantMULE)
+
+See also the list of [contributors](https://github.com/your-username/coursecrafter-ai/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+
