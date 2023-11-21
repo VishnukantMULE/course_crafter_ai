@@ -1,7 +1,6 @@
 import React from 'react'
+import VielleDash from './Vielle/VielleDash';
 
-export default function TalkWithAI() {
-  return (
-    <div>TalkWithAI</div>
-  )
+export default function TalkWithAI({ onGoBack }) {
+    return <VielleDash onGoBack={onGoBack} />;
 }

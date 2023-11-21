@@ -133,21 +133,23 @@ export default function CreateCourse() {
             <hr />
             <br />
             <button className="custom-button" onClick={handleTalkWithAIClick}>
-              + Talk with AI
+              + Talk with Vielle
             </button>
+            <p>comming soon ...</p>
           </div>
         </div>
       </div>
       <div className="custom-updated-card text-center">
         <div className="custom-updated-card-body">
-          <h2 className="custom-make-roadmap-heading">Make Roadmap </h2>
+          <h2 className="custom-make-roadmap-heading">Make Personalised Learning Roadmap </h2>
           <br />
             <hr />
-            <br />
           <div className="custom-updated-container-button text-center">
             <button className="custom-button" onClick={handleMakeRoadmapClick}>
-              + Make Roadmap
+              + Make  Roadmap
             </button>
+            <p>comming soon ...</p>
+
           </div>
         </div>
       </div>
@@ -161,6 +163,7 @@ export default function CreateCourse() {
             <button className="custom-button" onClick={handleMakeNotesClick}>
               + Make Notes
             </button>
+            <p>Under Devlopment ..</p>
           </div>
         </div>
       </div>
