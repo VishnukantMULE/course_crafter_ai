@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Generator from "./Generator";
 import English from "./English";
+import KnowledgeBase from "./KnowledgeBase";
+import TalkWithAI from "./TalkWithAI";
+import MakeRoadmap from "./MakeRoadmap";
+import MakeNotes from "./MakeNotes";
 import "./style/CreateCourse.css";
 import { useAuth } from "../../Auth/AuthContext";
-import axios from "axios"; // or any other HTTP library
-
+import axios from "axios";
 
 export default function CreateCourse() {
   const userId = useAuth();
   const [showComponent, setShowComponent] = useState("");
   const [englishScore, setEnglishScore] = useState(null);
 
-
   useEffect(() => {
-    axios.post('http://localhost:5000/getenglishscore', { userId })
-      .then(response => {
+    axios
+      .post("https://coursecrafterai.onrender.com/getenglishscore", { userId })
+      .then((response) => {
         if (response.data) {
-          setEnglishScore(response.data.score)
+          setEnglishScore(response.data.score);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }, [userId]);
@@ -32,9 +35,24 @@ export default function CreateCourse() {
     setShowComponent("english");
   };
 
+  const handleKnowledgeBaseClick = () => {
+    setShowComponent("knowledgeBase");
+  };
+
+  const handleTalkWithAIClick = () => {
+    setShowComponent("talkWithAI");
+  };
+
+  const handleMakeRoadmapClick = () => {
+    setShowComponent("makeRoadmap");
+  };
+
+  const handleMakeNotesClick = () => {
+    setShowComponent("makeNotes");
+  };
+
   return (
     <>
-
       {showComponent === "" && (
         <div className="container mt-5">
           <div className="row justify-content-center">
@@ -47,7 +65,6 @@ export default function CreateCourse() {
                     <button className="button" onClick={handleGeneratorClick}>
                       + Generate Course
                     </button>
-                    <div></div>
                   </div>
                 </div>
               </div>
@@ -60,53 +77,116 @@ export default function CreateCourse() {
         <Generator onGoBack={() => setShowComponent("")} />
       )}
 
-      {showComponent === "" && (
-        <div className="updated-container mt-5">
-          <div className="updated-row justify-content-center">
-            <div className="updated-card text-center">
-              <div className="updated-card-body">
-                <div className="your-updated-class-name">
-                  {englishScore !== null ? (
-                    <>
-                      <h2>Your English score is: {englishScore}/100</h2>
-                      <div className="updated-container-button">
-                        <button className="button" onClick={handleEnglishClick}>
-                          + Retake English Test
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <h2 className="your-updated-class-name">
-                        Give Language Proficiency Test (English)
-                      </h2>
-                      <div className="updated-container-button">
-                        <button className="button" onClick={handleEnglishClick}>
-                          + English Test
-                        </button>
-                      </div>
-                    </>
-                  )}
+{/* Section when showComponent is empty */}
+{showComponent === "" && (
+  <div className="container mt-5 custom-updated-container mt-5">
+    <div className="custom-updated-row justify-content-center">
+      <div className="custom-updated-card text-center">
+        <div className="custom-updated-card-body">
+          <div className="custom-english-test-container">
+            {englishScore !== null ? (
+              <>
+                <h2>Your English score is: {englishScore}/100</h2>
+                            <br />
+            <hr />
+                <div className="custom-updated-container-button">
+                  <button className="custom-button" onClick={handleEnglishClick}>
+                    + Retake English Test
+                  </button>
                 </div>
-              </div>
-            </div>
-            <div className="updated-card text-center">
-              <div className="updated-card-body">
-                <h2 className="your-updated-class-name">Check Knowledge Level </h2>
-                <label htmlFor="subject">Enter Subject:</label>
-                <input type="text" id="subject" name="subject" />
-                <br></br>
-                <div className="updated-container-button text-center">
-                  <button className="button">Check</button>
+              </>
+            ) : (
+              <>
+                <h2 className="custom-english-test-heading">
+                  Give Language Proficiency Test (English)
+                </h2>
+                <div className="custom-updated-container-button">
+                  <button className="custom-button" onClick={handleEnglishClick}>
+                    + English Test
+                  </button>
                 </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </div>
-      )}
+      </div>
+      <div className="custom-updated-card text-center">
+        <div className="custom-updated-card-body">
+          <h2 className="custom-knowledge-level-heading">
+            Check Knowledge Level{" "}
+          </h2>
+          <label htmlFor="subject">Enter Subject:</label>
+          <input type="text" id="subject" name="subject" />
+          <br></br>
+          <div className="custom-updated-container-button text-center">
+            <button className="custom-button" onClick={handleKnowledgeBaseClick}>
+              + Knowledge Test
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="custom-updated-card text-center">
+        <div className="custom-updated-card-body">
+          <h2 className="custom-talk-with-ai-heading">Talk with AI </h2>
+          <div className="custom-updated-container-button text-center">
+            <br />
+            <hr />
+            <br />
+            <button className="custom-button" onClick={handleTalkWithAIClick}>
+              + Talk with AI
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="custom-updated-card text-center">
+        <div className="custom-updated-card-body">
+          <h2 className="custom-make-roadmap-heading">Make Roadmap </h2>
+          <br />
+            <hr />
+            <br />
+          <div className="custom-updated-container-button text-center">
+            <button className="custom-button" onClick={handleMakeRoadmapClick}>
+              + Make Roadmap
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="custom-updated-card text-center">
+        <div className="custom-updated-card-body">
+          <h2 className="custom-make-notes-heading">Make Notes </h2>
+          <div className="custom-updated-container-button text-center">
+          <br />
+            <hr />
+            <br />
+            <button className="custom-button" onClick={handleMakeNotesClick}>
+              + Make Notes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {showComponent === "english" && (
         <English onGoBack={() => setShowComponent("")} />
+      )}
+
+      {showComponent === "knowledgeBase" && (
+        <KnowledgeBase onGoBack={() => setShowComponent("")} />
+      )}
+
+      {showComponent === "talkWithAI" && (
+        <TalkWithAI onGoBack={() => setShowComponent("")} />
+      )}
+
+      {showComponent === "makeRoadmap" && (
+        <MakeRoadmap onGoBack={() => setShowComponent("")} />
+      )}
+
+      {showComponent === "makeNotes" && (
+        <MakeNotes onGoBack={() => setShowComponent("")} />
       )}
     </>
   );

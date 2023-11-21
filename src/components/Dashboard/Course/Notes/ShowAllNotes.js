@@ -11,7 +11,7 @@ const ShowAllNotes = ({ onEditNote }) => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:5000/loadallnotes', {
+        const response = await fetch('https://coursecrafterai.onrender.com/loadallnotes', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const ShowAllNotes = ({ onEditNote }) => {
   }, [userId]);
 
   const handleDeleteNote = (noteId) => {
-    fetch('http://localhost:5000/deletenote', {
+    fetch('https://coursecrafterai.onrender.com/deletenote', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

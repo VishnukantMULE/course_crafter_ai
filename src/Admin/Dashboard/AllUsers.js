@@ -18,7 +18,7 @@ export default function AllUsers() {
     }
 
     axios
-      .get("http://localhost:5000/allusers", {
+      .get("https://coursecrafterai.onrender.com/allusers", {
         headers: {
           Authorization: `Bearer ${adminToken}`,
         },

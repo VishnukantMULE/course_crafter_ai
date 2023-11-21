@@ -12,7 +12,7 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.post(`http://localhost:5000/api/getCourseStructure`, { courseId });
+        const response = await axios.post(`https://coursecrafterai.onrender.com/api/getCourseStructure`, { courseId });
         setCourse(response.data);
         calculateOverallProgress(response.data);
       } catch (error) {
@@ -42,7 +42,7 @@ export default function CourseNavbar({ courseId, onChapterClick, isNavbarCollaps
       const progress = (completedChapters / totalChapters) * 100;
       setOverallProgress(progress);
   
-      const response = await fetch('http://localhost:5000/updateprogress', {
+      const response = await fetch('https://coursecrafterai.onrender.com/updateprogress', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

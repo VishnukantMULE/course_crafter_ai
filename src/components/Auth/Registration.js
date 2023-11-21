@@ -33,7 +33,7 @@ function Registration() {
     setAlertMessage(  " If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊"
     )
     axios
-      .post(`http://localhost:5000/registration`, {
+      .post(`https://coursecrafterai.onrender.com/registration`, {
         firstName,
         lastName,
         phone,

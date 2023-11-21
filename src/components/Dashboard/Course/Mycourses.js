@@ -16,7 +16,7 @@ export default function Mycourses({ userid }) {
 
   useEffect(() => {
     
-    fetch(`http://localhost:5000/api/getCourseData`, {
+    fetch(`https://coursecrafterai.onrender.com/api/getCourseData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export default function Mycourses({ userid }) {
 
   const handleDeleteCourse = async (courseId) => {
     try {
-      await axios.delete(`http://localhost:5000/deletecourse`, {
+      await axios.delete(`https://coursecrafterai.onrender.com/deletecourse`, {
         data: {
           courseId: courseId,
         },

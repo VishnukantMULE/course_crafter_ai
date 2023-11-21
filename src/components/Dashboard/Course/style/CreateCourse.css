@@ -1,66 +1,108 @@
-.button{
-    background-color: rgba(255, 28, 28, 0.828);
-    border: 1px solid black;
-    color: white;
-    font-size: large;
-    border-radius: 5px;
+.button {
+  background-color: rgba(255, 28, 28, 0.828);
+  border: 1px solid black;
+  color: white;
+  font-size: large;
+  border-radius: 5px;
 }
-.button:hover{
-    color: black;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
+.button:hover {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
 }
-
-
-
-
 
 .card {
-    text-align: center;
+  text-align: center;
 }
-
 
 .generate-course-container-updated,
 .english-test-container-updated {
-   
-    margin-bottom: 2vh;
+  margin-bottom: 2vh;
 }
 
 .card-title-updated {
-    margin-bottom: 1vh;
+  margin-bottom: 1vh;
+}
+
+.updated-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.updated-row {
+  display: flex;
+  justify-content: center;
+}
+
+.updated-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.updated-card-body {
+  padding: 20px;
+}
+
+.updated-container-button {
+  margin-top: 20px;
+}
+
+.custom-updated-container {
+  margin-top: 5rem;
+}
+
+.custom-updated-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 
-.updated-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5rem;
-  }
-  
-  .updated-row {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .updated-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 300px; /* You can adjust the width as needed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .updated-card-body {
-    padding: 20px;
-  }
 
-  
-  .updated-container-button {
-    margin-top: 20px;
-  }
-  
+.custom-updated-card {
+  text-align: center;
+  margin: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  width: calc(30% - 2rem);
+  box-sizing: border-box;
+  height: 250px;
+}
 
-  
-  /* Add any additional styles as needed */
-  
+@media screen and (max-width: 768px) {
+  .custom-updated-card {
+    width: calc(48% - 2rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .custom-updated-card {
+    width: 100%;
+  }
+}
+
+.custom-updated-container-button {
+  margin-top: 1rem;
+}
+
+.custom-button {
+  background-color: rgba(255, 28, 28, 0.828);
+  border: 1px solid black;
+  color: white;
+  font-size: large;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.custom-button:hover {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+}

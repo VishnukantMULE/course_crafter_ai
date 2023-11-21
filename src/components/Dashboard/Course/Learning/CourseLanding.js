@@ -18,7 +18,7 @@ export default function CourseLanding() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.post(`http://localhost:5000/api/getCourseStructure`, { courseId });
+        const response = await axios.post(`https://coursecrafterai.onrender.com/api/getCourseStructure`, { courseId });
         setCourse(response.data);
       } catch (error) {
         console.error('Error:', error);
