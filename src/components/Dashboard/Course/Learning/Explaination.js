@@ -10,7 +10,7 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
   const [isLoading, setIsLoading] = useState(true); 
  const updateCompletion = async (courseId, moduleNo, chapterNo) => {
         try {
-            const response = await axios.post(`https://coursecrafterai.onrender.com/updateCompletionStatus`, {
+            const response = await axios.post(`http://localhost:5000/updateCompletionStatus`, {
                 courseId,
                 moduleNo,
                 chapterNo,
@@ -34,13 +34,13 @@ export default function Explanation({ courseId, selectedChapter, selectedModule 
       try {
         let responseData = null;
         if (selectedChapter === null) {
-          responseData = await axios.post(`https://coursecrafterai.onrender.com/getchapterdata`, {
+          responseData = await axios.post(`http://localhost:5000/getchapterdata`, {
             courseId,
             moduleNumber: 1, 
             chapterNumber: 1, 
           });
         } else {
-          responseData = await axios.post(`https://coursecrafterai.onrender.com/getchapterdata`, {
+          responseData = await axios.post(`http://localhost:5000/getchapterdata`, {
             courseId,
             moduleNumber: selectedModule + 1,
             chapterNumber: selectedChapter.chapterIndex + 1,

@@ -76,7 +76,7 @@ export default function CreateNote({ onCancel }) {
   const saveToBackend = () => {
     const deltaContent = JSON.stringify(value);
 
-    fetch('https://coursecrafterai.onrender.com/savenotes', {
+    fetch('http://localhost:5000/savenotes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

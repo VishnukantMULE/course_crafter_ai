@@ -22,7 +22,7 @@ export default function AllCourses() {
     }
 
     axios
-      .get('https://coursecrafterai.onrender.com/allcourses', {
+      .get('http://localhost:5000/allcourses', {
         headers: {
           Authorization: `Bearer ${adminToken}`,
         },
@@ -40,7 +40,7 @@ export default function AllCourses() {
 
   const handleDeleteCourse = async (courseId) => {
     try {
-      await axios.delete(`https://coursecrafterai.onrender.com/deletecourse/${courseId}`, {
+      await axios.delete(`http://localhost:5000/deletecourse/${courseId}`, {
         headers: {
           Authorization: `Bearer ${adminToken}`,
         },

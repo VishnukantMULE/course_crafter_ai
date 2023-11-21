@@ -6,6 +6,7 @@ import './style/Login.css';
 import CustomAlert from '../../services/CustomAlert';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import Loading from './Loading'
 // import bgimage from '../Home/Images/Wallpaper/steptodown.com282175.jpg'
 
 function Login() {
@@ -13,6 +14,7 @@ function Login() {
   const [alertMessage, setAlertMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { loginUser } = useAuth();
 
@@ -22,8 +24,9 @@ function Login() {
       setShowAlert(true);
       return;
     }
-    setAlertMessage(  " If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊"
-    )
+
+    setLoading(true);
+    setAlertMessage(" If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊");
 
     axios
       .post(`https://coursecrafterai.onrender.com/login`, { email, password })
@@ -44,18 +47,23 @@ function Login() {
         console.error('Login error:', error);
         setAlertMessage(errorMessage);
         setShowAlert(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
+
     <div className='custom-login-background' >
+
       <div className="custom-navbar">
         <h2 className='custom-nav-h2'>CourseCrafter AI</h2>
       </div>
       <div className='custom-container'>
         <div className='custom-row justify-content-center align-items-center min-vh-100'>
           <div className='custom-columns p-4 rounded custom-login-container'>
-            <h2  className='text-center mb-4 custom-heading-nav'>Login</h2>
+            <h2 className='text-center mb-4 custom-heading-nav'>Login</h2>
             <br />
             <div className='custom-mb-3'>
               <input
@@ -87,13 +95,15 @@ function Login() {
               Or
             </div>
             <div className="custom-glogin">
-              
+
               <GoogleLogin
-              buttonText="continue_with"
+                buttonText="continue_with"
+                
                 onSuccess={credentialResponse => {
                   const emailauth = jwtDecode(credentialResponse.credential);
                   const auth_email = emailauth.email;
                   console.log(emailauth.email);
+                  setLoading(true);
                   axios
                     .post(`https://coursecrafterai.onrender.com/authlogin`, { auth_email })
                     .then((response) => {
@@ -108,6 +118,9 @@ function Login() {
                       console.error('Login error:', error);
                       setAlertMessage('Login Failed: ' + error.message);
                       setShowAlert(true);
+                    })
+                    .finally(() => {
+                      setLoading(false);
                     });
                 }}
                 onError={() => {
@@ -116,10 +129,14 @@ function Login() {
               />
             </div>
           </div>
+          <p className='sorrymessage'>If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊</p>
         </div>
+
       </div>
+      {loading && <Loading />}
       {showAlert && <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />}
     </div>
+
   );
 }
 
