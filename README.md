@@ -1,8 +1,14 @@
+<div align="center">
+
 # CourseCrafter AI
-![CourseCrafter AI]([https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fjheubx67yh8gm1j8kwc.png](https://ik.imagekit.io/3jobkavje/CourseCrafter%20AI.png?updatedAt=1700593450651))
+![CourseCrafter AI](https://ik.imagekit.io/3jobkavje/CourseCrafter%20AI.png?updatedAt=1700593450651)
+
+</div>
+
 Embark on a learning journey like never before with CourseCrafter AI, a cutting-edge platform that brings together the power of generative AI and the vast resources of YouTube to tailor educational experiences just for you.
 
 At CourseCrafter AI, we understand that every learner is unique, and that's why we've harnessed the capabilities of the Google Palm model to create personalized courses on any topic you can imagine. Whether you're diving into the depths of quantum physics or exploring the intricacies of gourmet cooking, our platform is designed to cater to your individual learning preferences.
+
 
 
 ## Getting Started
