@@ -17,8 +17,8 @@
   margin-top: 20px;
 }
 
-.button {
-  flex: 1 1 45%; /* Adjust button width as needed */
+.buttonp {
+  flex: 1 1 45%; 
   margin: 5px;
 }
 
@@ -54,6 +54,9 @@
   margin: 0;
   padding: 5px 0;
 }
+/* .bckbtn{
+  margin-left: 370px;
+} */
 
 @media only screen and (max-width: 600px) {
   .listening-container,

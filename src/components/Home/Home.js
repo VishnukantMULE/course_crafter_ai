@@ -11,6 +11,8 @@ import interactivepng from '../Home/Images/Logo/interactive.png';
 import personalisepng from '../Home/Images/Logo/personalise.png';
 import progresspng from '../Home/Images/Logo/progress.png';
 import wallpaper from './Images/Wallpaper/steptodown.com213485.jpg';
+// import wallpaper from './Images/Wallpaper/7xm.xyz336330.jpg';
+
 
 export default function Home() {
   const [isToggled, setIsToggled] = useState(false);

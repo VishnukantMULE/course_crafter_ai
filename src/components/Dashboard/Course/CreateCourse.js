@@ -136,7 +136,7 @@ export default function CreateCourse() {
             <button className="custom-button" onClick={handleTalkWithAIClick}>
               + Talk with Vielle
             </button>
-            <p>comming soon ...</p>
+            <p>Under Devlopement ...</p>
           </div>
         </div>
       </div>

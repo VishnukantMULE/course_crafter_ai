@@ -7,6 +7,14 @@ import { useAuth } from '../../../Auth/AuthContext';
 import Modal from 'react-modal';
 import './style/CreateNotes.css';
 import CustomAlert from '../../../../services/CustomAlert';
+import { FaArrowCircleRight } from "react-icons/fa";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { BiSolidMemoryCard } from "react-icons/bi";
+import { FaCloudUploadAlt ,FaFilePdf } from "react-icons/fa";
+
+
+
+
 
 const modules = {
   toolbar: [
@@ -109,8 +117,8 @@ export default function CreateNote({ onCancel }) {
             onChange={handleTitleChange}
           />
           <div className='button-container'>
-            <button className='modal-button' onClick={handleBackButtonClick}>Back</button>
-            <button className='modal-button' onClick={handleTitleSubmit}>Next</button>
+            <button className='modal-button' onClick={handleBackButtonClick}><IoArrowBackCircleSharp/> &nbsp;Back</button>
+            <button className='modal-button' onClick={handleTitleSubmit}><FaArrowCircleRight/> &nbsp;Next</button>
           </div>
         </div>
       </Modal>
@@ -121,12 +129,14 @@ export default function CreateNote({ onCancel }) {
           <ReactQuill value={value} onChange={handleEditorChange} modules={modules} />
         </div>
 
-        <button className='buttonsave' onClick={saveContent}>Save</button>
-        <button className='buttonsave' onClick={saveToBackend}>
+        <button className='buttonsave' onClick={saveContent}><BiSolidMemoryCard/> &nbsp;Save</button>
+        <button className='buttonsave' onClick={saveToBackend}><FaCloudUploadAlt />&nbsp;
+
           Save to Backend
         </button>
         <button className='buttonsave' onClick={loadContent}>Load</button>
-        <button className='buttonsave' onClick={exportPDF}>Export as PDF</button>
+        <button className='buttonsave' onClick={exportPDF}><FaFilePdf />&nbsp;
+Export as PDF</button>
       </div>
       {alertVisible && (
         <CustomAlert message={alertMessage} onClose={() => setAlertVisible(false)} />

@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import './Course/style/DashbordNav.css';
 // import logo from '../Home/Images/Logo/Course_Crafter.png';
-import profilepng from './Style/ICONS/profile.png'
+
 import togglepng from './Course/Learning/style/ICONS/toggle.png'
 import crosspng from './Course/Learning/style/ICONS/cross.png'
+import { FaNotesMedical,FaMicrochip } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { SiProgress } from "react-icons/si";
+
+
+
+
 
 export default function DashbordNav({ setSelectedOption, selectedOption }) {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -47,21 +55,19 @@ export default function DashbordNav({ setSelectedOption, selectedOption }) {
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className={`nav-item ${selectedOption === 'create-course' ? 'active' : ''}`} onClick={() => handleOptionClick('create-course')}>
-                            <span className="nav-link">Generate Course</span>
+                            <span className="nav-link"> <FaMicrochip/> &nbsp; Generate Course</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'my-learning' ? 'active' : ''}`} onClick={() => handleOptionClick('my-learning')}>
-                            <span className="nav-link">My Learning</span>
+                            <span className="nav-link"><SiProgress /> &nbsp; My Learning</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'completed-courses' ? 'active' : ''}`} onClick={() => handleOptionClick('completed-courses')}>
-                            <span className="nav-link">Completed Courses</span>
+                            <span className="nav-link"><IoCheckmarkDoneCircle /> &nbsp; Completed Courses</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'notes' ? 'active' : ''}`} onClick={() => handleOptionClick('notes')}>
-                            <span className="nav-link">Notes</span>
+                            <span className="nav-link"> <FaNotesMedical /> &nbsp; Notes</span>
                         </li>
                         <li className={`nav-item ${selectedOption === 'profile' ? 'active' : ''}`} onClick={() => handleOptionClick('profile')}>
-                            <span className='nav-link'>
-                                <img src={profilepng} alt="Profile Icon" /> Profile
-                            </span>
+                        <span className="nav-link"> <FaUserCircle /> &nbsp; Profile</span>
                         </li>
                     </ul>
                 </div>

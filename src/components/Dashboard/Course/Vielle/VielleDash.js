@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { FaMicrophone, FaMicrophoneSlash, FaVolumeUp, FaVolumeMute,FaStopCircle  } from 'react-icons/fa'; // Import icons
+import { FaMicrophone, FaMicrophoneSlash, FaStopCircle  } from 'react-icons/fa'; // Import icons
 import './style/VielleDash.css';
 import { MdLockReset } from "react-icons/md";
+import { IoArrowBackSharp } from "react-icons/io5";
 
 
 
-const VielleDash = () => {
+
+export default function VielleDash(props)
+ {
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const [pauseTimer, setPauseTimer] = useState(null);
   const [breakDetected, setBreakDetected] = useState(false);
@@ -89,6 +92,10 @@ const VielleDash = () => {
         setBackendResponse("Error processing the request");
       });
   };
+  const handleGoBack = () => {
+    props.onGoBack();
+  };
+
 
   const listenContinuously = () => {
     if (SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -120,25 +127,29 @@ const VielleDash = () => {
             </>
           )}
         </span>
+        
        
         <div className="buttons-container">
-          <button className="button" type="button" onClick={resetTranscript}>
-          <MdLockReset /> reset
+        <button className="buttonp button" onClick={handleGoBack}><IoArrowBackSharp /> &nbsp;
+        Go Back
+      </button>
+          <button className="buttonp button" type="button" onClick={resetTranscript}>
+          <MdLockReset />  &nbsp; reset
 
           </button>
          
-          <button className="button" type="button" onClick={listenContinuously}>
+          <button className="buttonp button" type="button" onClick={listenContinuously}>
           {listening ? (
             <>
-             <FaMicrophone />  on
+             <FaMicrophone />  &nbsp; on
             </>
           ) : (
             <>
-            <FaMicrophoneSlash />  off
+            <FaMicrophoneSlash />  &nbsp; off
             </>
           )}
           </button>
-          <button className="button" type="button" onClick={stopSpeech}>
+          <button className="buttonp button" type="button" onClick={stopSpeech}>
           <FaStopCircle /> stop
           </button>
         </div>
@@ -170,8 +181,9 @@ const VielleDash = () => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };
 
-export default VielleDash;
+

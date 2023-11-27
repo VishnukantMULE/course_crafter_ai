@@ -14,14 +14,10 @@
 
 .profile-photo {
   width: 100px;
-  height:100px;
+  height: 100px;
   border-radius: 50%;
-  margin-right: 20px;
-  margin-top: 20px;
-  justify-content: center;
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  display: block;
 }
 .verificationimg{
   height: 25px;

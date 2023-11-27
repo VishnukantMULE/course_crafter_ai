@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../../Auth/AuthContext';
 import './style/ShowAllNotes.css';
 import Loading from '../../../Auth/Loading';
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { FaEdit } from "react-icons/fa";
+
 
 const ShowAllNotes = ({ onEditNote }) => {
   const { userId } = useAuth();
@@ -62,7 +65,7 @@ const ShowAllNotes = ({ onEditNote }) => {
 
   return (
     <div className='my-courses-container'>
-      <h2 className='course-headingr'>Created Notes</h2>
+      <h2 className='course-headingr'>My Notes</h2>
       <hr />
       <div className='card-listr'>
         {loading && <Loading />}
@@ -86,10 +89,10 @@ const ShowAllNotes = ({ onEditNote }) => {
                 <strong>Last Access Time:</strong> {note.last_access_time}
               </p>
               <div className='note-actions'>
-                <button onClick={() => handleDeleteNote(note.note_id)}>
-                  Delete
+                <button onClick={() => handleDeleteNote(note.note_id)}><RiDeleteBin6Fill />
                 </button>
-                <button onClick={() => handleEditNote(note.note_id)}>Edit</button>
+                <button onClick={() => handleEditNote(note.note_id)}><FaEdit />
+</button>
               </div>
             </li>
           ))}

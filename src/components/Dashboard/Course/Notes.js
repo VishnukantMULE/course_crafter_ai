@@ -3,6 +3,8 @@ import ShowAllNotes from './Notes/ShowAllNotes';
 import EditNote from './Notes/EditNote'; // Import the EditNote component
 import './style/Notes.css'; // Import the external CSS file
 import CreateNote from './Notes/CreateNote';
+import { IoIosAddCircleOutline } from "react-icons/io";
+
 export default function Notes() {
   const [showCreateNote, setShowCreateNote] = useState(false);
   const [editNoteId, setEditNoteId] = useState(null);
@@ -31,6 +33,7 @@ export default function Notes() {
           <div className="btnposition">
             <hr />
             <button className="create-note-button" onClick={handleCreateNoteClick}>
+            <IoIosAddCircleOutline /> &nbsp;
               Create Note
             </button>
           </div>
