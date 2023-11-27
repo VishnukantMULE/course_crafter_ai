@@ -2,96 +2,174 @@ import React, { useState, useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { FaMicrophone, FaMicrophoneSlash, FaVolumeUp, FaVolumeMute,FaStopCircle  } from 'react-icons/fa'; // Import icons
+import './style/VielleDash.css';
+import { MdLockReset } from "react-icons/md";
 
-const VielleDash = (props) => {
+
+
+const VielleDash = () => {
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const [pauseTimer, setPauseTimer] = useState(null);
   const [breakDetected, setBreakDetected] = useState(false);
-  const {
-    transcript,
-    resetTranscript,
-    listening,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const [lastTranscript, setLastTranscript] = useState("");
+  const [backendResponse, setBackendResponse] = useState("");
+  const [isSpeechInterrupted, setIsSpeechInterrupted] = useState(false);
+  const { transcript, resetTranscript, listening } = useSpeechRecognition();
 
   useEffect(() => {
-    if (transcript !== "") {
-      setIsUserSpeaking(true);
-      clearTimeout(pauseTimer);
-      setPauseTimer(null);
-      setBreakDetected(false);
-
-      const timeoutId = setTimeout(() => {
-        setIsUserSpeaking(false);
-        sendTranscriptToBackend(transcript);
-      }, 2000);
-
+    if (listening) {
+      if (pauseTimer) {
+        clearTimeout(pauseTimer);
+      }
       setPauseTimer(
         setTimeout(() => {
-          if (!isUserSpeaking) {
-            setBreakDetected(true);
+          setIsUserSpeaking(false);
+          setBreakDetected(true);
+          if (!isSpeechInterrupted) {
+            sendTranscriptToBackend(
+              transcript.slice(lastTranscript.length).trim()
+            );
           }
+          setLastTranscript(transcript);
         }, 3000)
       );
+    }// eslint-disable-next-line
+  }, [listening, transcript, isSpeechInterrupted]);
 
-      return () => {
-        clearTimeout(timeoutId);
-        clearTimeout(pauseTimer);
-        setIsUserSpeaking(false);
-        setBreakDetected(false);
-      };
-    }
-  }, [transcript, isUserSpeaking, pauseTimer]);
+  useEffect(() => {
+    // Speak the backend response when it changes
+    if (backendResponse) {
+      speak(backendResponse);
+    }// eslint-disable-next-line
+  }, [backendResponse]);
 
-  const sendTranscriptToBackend = (text) => {
-    console.log("Sending transcript to backend:", text);
+  const speak = (text) => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Stop listening before speaking
+    SpeechRecognition.stopListening();
+
+    setIsUserSpeaking(true); // Set speaking indicator to true
+
+    synth.speak(utterance);
+
+    // Event listener to handle when speech ends
+    utterance.onend = () => {
+      // Additional logic after speech ends, if needed
+      setIsUserSpeaking(false); // Reset speaking indicator
+      if (!isSpeechInterrupted) {
+        // Start listening after speech ends
+        SpeechRecognition.startListening({
+          continuous: true,
+          language: "en-IN",
+        });
+      } else {
+        setIsSpeechInterrupted(false);
+      }
+    };
   };
 
-  if (!browserSupportsSpeechRecognition) {
-    return (
-      <div>
-        Your browser does not support speech recognition. Please use a
-        compatible browser.
-      </div>
-    );
-  }
+  const sendTranscriptToBackend = (text) => {
+    fetch("https://coursecrafterai.onrender.com/vielle/getmessage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setBackendResponse(data.message); // Set the backend response in the state
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setBackendResponse("Error processing the request");
+      });
+  };
 
   const listenContinuously = () => {
+    if (SpeechRecognition.browserSupportsSpeechRecognition()) {
+      SpeechRecognition.stopListening();
+    }
+
     SpeechRecognition.startListening({
       continuous: true,
       language: "en-IN",
     });
   };
 
+  const stopSpeech = () => {
+    const synth = window.speechSynthesis;
+    synth.cancel();
+  };
+
   return (
-    <div>
-      <div>
-        <span>Listening: {listening ? "On" : "Off"}</span>
-        <div>
-          <button type="button" onClick={resetTranscript}>
-            Reset
+    <div className="main-container">
+      <div className="listening-container">
+        <span className="listening-status">
+          {listening ? (
+            <>
+               Listening:  <FaMicrophone />
+            </>
+          ) : (
+            <>
+               Listening:  <FaMicrophoneSlash />
+            </>
+          )}
+        </span>
+       
+        <div className="buttons-container">
+          <button className="button" type="button" onClick={resetTranscript}>
+          <MdLockReset /> reset
+
           </button>
-          <button type="button" onClick={listenContinuously}>
-            Start Listening
+         
+          <button className="button" type="button" onClick={listenContinuously}>
+          {listening ? (
+            <>
+             <FaMicrophone />  on
+            </>
+          ) : (
+            <>
+            <FaMicrophoneSlash />  off
+            </>
+          )}
           </button>
-          <button type="button" onClick={SpeechRecognition.stopListening}>
-            Stop Listening
+          <button className="button" type="button" onClick={stopSpeech}>
+          <FaStopCircle /> stop
           </button>
         </div>
       </div>
-      <div>
-        {transcript.split("\n").map((item, i) => (
-          <p key={i}>{item}</p>
-        ))}
-        {breakDetected && (
-          <>
-            <hr />
-            Break
-            <hr />
-          </>
+
+      <div className="human-container">
+        <div className="transcript-container">
+          {transcript.split("\n").map((item, i) => (
+            <p key={i} className="transcript-line">{item}</p>
+          ))}
+          {breakDetected && (
+            <>
+              <hr className="break-line" />
+              break
+              <hr className="break-line" />
+            </>
+          )}
+        </div>
+        {isUserSpeaking && <span className="speaking-indicator">...</span>}
+      </div>
+
+      <div className="ai-container">
+        {backendResponse && (
+          <div className="backend-response-container">
+            <hr className="backend-response-line" />
+            <p className="backend-response-label">Vielle Response:</p>
+            <p className="backend-response-content">{backendResponse}</p>
+            <hr className="backend-response-line" />
+          </div>
         )}
       </div>
-      {isUserSpeaking && <span>...</span>}
     </div>
   );
 };

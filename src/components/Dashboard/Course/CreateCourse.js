@@ -86,8 +86,8 @@ export default function CreateCourse() {
           <div className="custom-english-test-container">
             {englishScore !== null ? (
               <>
-                <h2>Your English score is: {englishScore}/100</h2>
-                            <br />
+                <h2 className="hn">Your English score is: {englishScore}/100</h2>
+                           
             <hr />
                 <div className="custom-updated-container-button">
                   <button className="custom-button" onClick={handleEnglishClick}>
@@ -97,7 +97,7 @@ export default function CreateCourse() {
               </>
             ) : (
               <>
-                <h2 className="custom-english-test-heading">
+                <h2 className="custom-english-test-heading hn">
                   Give Language Proficiency Test (English)
                 </h2>
                 <div className="custom-updated-container-button">
@@ -112,9 +112,10 @@ export default function CreateCourse() {
       </div>
       <div className="custom-updated-card text-center">
         <div className="custom-updated-card-body">
-          <h2 className="custom-knowledge-level-heading">
+          <h2 className="custom-knowledge-level-heading hn">
             Check Knowledge Level{" "}
           </h2>
+          <hr />
           <label htmlFor="subject">Enter Subject:</label>
           <input type="text" id="subject" name="subject" />
           <br></br>
@@ -127,11 +128,11 @@ export default function CreateCourse() {
       </div>
       <div className="custom-updated-card text-center">
         <div className="custom-updated-card-body">
-          <h2 className="custom-talk-with-ai-heading">Talk with AI </h2>
+          <h2 className="custom-talk-with-ai-heading hn">Talk with AI </h2>
           <div className="custom-updated-container-button text-center">
-            <br />
+           
             <hr />
-            <br />
+           
             <button className="custom-button" onClick={handleTalkWithAIClick}>
               + Talk with Vielle
             </button>
@@ -141,8 +142,8 @@ export default function CreateCourse() {
       </div>
       <div className="custom-updated-card text-center">
         <div className="custom-updated-card-body">
-          <h2 className="custom-make-roadmap-heading">Make Personalised Learning Roadmap </h2>
-          <br />
+          <h2 className="custom-make-roadmap-heading hn">Make Personalised Learning Roadmap </h2>
+         
             <hr />
           <div className="custom-updated-container-button text-center">
             <button className="custom-button" onClick={handleMakeRoadmapClick}>
@@ -155,11 +156,11 @@ export default function CreateCourse() {
       </div>
       <div className="custom-updated-card text-center">
         <div className="custom-updated-card-body">
-          <h2 className="custom-make-notes-heading">Make Notes </h2>
+          <h2 className="custom-make-notes-heading hn">Make Notes </h2>
           <div className="custom-updated-container-button text-center">
-          <br />
+         
             <hr />
-            <br />
+           
             <button className="custom-button" onClick={handleMakeNotesClick}>
               + Make Notes
             </button>
