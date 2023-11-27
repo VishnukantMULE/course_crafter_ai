@@ -20,7 +20,7 @@ export default function Profile() {
 
   useEffect(() => {
     // Fetch user profile data from the API endpoint using the userId from the context
-    fetch(`http://localhost:5000/user/profile`, {
+    fetch(`https://coursecrafterai.onrender.com/user/profile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export default function Profile() {
 
   const handleSave = () => {
     // Send a PUT request to update the user profile
-    fetch(`http://localhost:5000/user/updateprofile`, {
+    fetch(`https://coursecrafterai.onrender.com/user/updateprofile`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -52,7 +52,7 @@ export default function AuthRegister() {
         }
 
         axios
-            .post(`http://localhost:5000/user/authregistration`, {
+            .post(`https://coursecrafterai.onrender.com/user/authregistration`, {
                 firstName: fname,
                 lastName: lname,
                 phone,

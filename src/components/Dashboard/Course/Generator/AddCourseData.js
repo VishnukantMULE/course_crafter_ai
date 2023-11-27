@@ -73,7 +73,7 @@ export default function AddCourseData({ onGoBack }) {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const newSocket = socketIOClient('http://localhost:5000');
+        const newSocket = socketIOClient('https://coursecrafterai.onrender.com');
         setSocket(newSocket);
     
         return () => {
@@ -117,7 +117,7 @@ export default function AddCourseData({ onGoBack }) {
         };
         setComponentToShow('progress'); 
 
-        Axios.post(`http://localhost:5000/generate/generatecourse`, data)
+        Axios.post(`https://coursecrafterai.onrender.com/generate/generatecourse`, data)
             .then((response) => {
                 setGeneratedCourseData(response.data); 
                 setComponentToShow('generatedCourse'); 

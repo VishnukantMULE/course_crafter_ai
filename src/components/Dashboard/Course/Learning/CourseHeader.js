@@ -13,7 +13,7 @@ export default function CourseHeader({ courseId, username, onToggleNavbar }) {
   useEffect(() => {
     const fetchCourseName = async () => {
       try {
-        const response = await fetch('http://localhost:5000/access/getcoursename', {
+        const response = await fetch('https://coursecrafterai.onrender.com/access/getcoursename', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

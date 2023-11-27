@@ -40,7 +40,7 @@ export default function EditNote({ noteId, onCancel }) {
   useEffect(() => {
     const fetchNoteData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/notes/loadnote`, {
+        const response = await fetch(`https://coursecrafterai.onrender.com/notes/loadnote`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export default function EditNote({ noteId, onCancel }) {
       content: noteData.content,
     };
   
-    fetch('http://localhost:5000/notes/updatenote', {
+    fetch('https://coursecrafterai.onrender.com/notes/updatenote', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

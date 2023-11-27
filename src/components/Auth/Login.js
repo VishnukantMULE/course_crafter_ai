@@ -29,7 +29,7 @@ function Login() {
     setAlertMessage(" If we are taking time, please wait because we are on a serverless platform, so it takes time to start the server from sleeping mode. ⏳🛠️ Thank you for your patience! 😊");
 
     axios
-      .post(`http://localhost:5000/user/login`, { email, password })
+      .post(`https://coursecrafterai.onrender.com/user/login`, { email, password })
       .then((response) => {
         if (response.data.message === 'Authentication successful') {
           loginUser(response.data.userId);
@@ -105,7 +105,7 @@ function Login() {
                   console.log(emailauth.email);
                   setLoading(true);
                   axios
-                    .post(`http://localhost:5000/user/authlogin`, { auth_email })
+                    .post(`https://coursecrafterai.onrender.com/user/authlogin`, { auth_email })
                     .then((response) => {
                       if (response.data.message === 'Authentication successful') {
                         loginUser(response.data.userId);

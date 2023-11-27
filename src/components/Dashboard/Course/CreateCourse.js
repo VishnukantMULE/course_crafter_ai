@@ -16,7 +16,7 @@ export default function CreateCourse() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/lang/getenglishscore", { userId })
+      .post("https://coursecrafterai.onrender.com/lang/getenglishscore", { userId })
       .then((response) => {
         if (response.data) {
           setEnglishScore(response.data.score);

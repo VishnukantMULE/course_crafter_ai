@@ -12,7 +12,7 @@ export default function CompletedCourse({ userid }) {
   useEffect(() => {
     const fetchCompletedCourses = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/access/completedcourses', {
+        const response = await axios.post('https://coursecrafterai.onrender.com/access/completedcourses', {
             userid: userid,
         });
         setCompletedCourses(response.data);
@@ -28,7 +28,7 @@ export default function CompletedCourse({ userid }) {
 
   const handleDeleteCourse = async (courseId) => {
     try {
-      await axios.delete(`http://localhost:5000/manage/deletecourse`, {
+      await axios.delete(`https://coursecrafterai.onrender.com/manage/deletecourse`, {
         data: {
           courseId: courseId,
         },
