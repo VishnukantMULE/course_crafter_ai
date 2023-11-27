@@ -14,8 +14,8 @@ export default function AdminLogin() {
   const { setToken } = useAdminContext();
 
   const handleLogin = () => {
-    // Assuming your backend server is running on https://coursecrafterai.onrender.com
-    const apiUrl = "https://coursecrafterai.onrender.com/adminlogin";
+    // Assuming your backend server is running on http://localhost:5000
+    const apiUrl = "http://localhost:5000/admin/adminlogin";
 
     fetch(apiUrl, {
       method: "POST",

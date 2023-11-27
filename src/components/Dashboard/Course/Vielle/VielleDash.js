@@ -4,8 +4,9 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 const VielleDash = (props) => {
-  const [message, setMessage] = useState("");
-  const [isUserSpeaking, setIsUserSpeaking] = useState(false); // Track if the user is speaking
+  const [isUserSpeaking, setIsUserSpeaking] = useState(false);
+  const [pauseTimer, setPauseTimer] = useState(null);
+  const [breakDetected, setBreakDetected] = useState(false);
   const {
     transcript,
     resetTranscript,
@@ -15,22 +16,32 @@ const VielleDash = (props) => {
 
   useEffect(() => {
     if (transcript !== "") {
-      console.log("Received transcript:", transcript);
-
       setIsUserSpeaking(true);
+      clearTimeout(pauseTimer);
+      setPauseTimer(null);
+      setBreakDetected(false);
 
       const timeoutId = setTimeout(() => {
         setIsUserSpeaking(false);
-
         sendTranscriptToBackend(transcript);
       }, 2000);
 
+      setPauseTimer(
+        setTimeout(() => {
+          if (!isUserSpeaking) {
+            setBreakDetected(true);
+          }
+        }, 3000)
+      );
+
       return () => {
         clearTimeout(timeoutId);
+        clearTimeout(pauseTimer);
         setIsUserSpeaking(false);
+        setBreakDetected(false);
       };
     }
-  }, [transcript]);
+  }, [transcript, isUserSpeaking, pauseTimer]);
 
   const sendTranscriptToBackend = (text) => {
     console.log("Sending transcript to backend:", text);
@@ -68,11 +79,19 @@ const VielleDash = (props) => {
           </button>
         </div>
       </div>
-      <div>{message}</div>
       <div>
-        <span>{transcript}</span>
-        {isUserSpeaking && <span>...</span>}
+        {transcript.split("\n").map((item, i) => (
+          <p key={i}>{item}</p>
+        ))}
+        {breakDetected && (
+          <>
+            <hr />
+            Break
+            <hr />
+          </>
+        )}
       </div>
+      {isUserSpeaking && <span>...</span>}
     </div>
   );
 };

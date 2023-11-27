@@ -19,7 +19,7 @@ export default function EnglishTestDash() {
   );
 
   useEffect(() => {
-    fetch("https://coursecrafterai.onrender.com/getenglishtest")
+    fetch("http://localhost:5000/lang/getenglishtest")
       .then((response) => response.json())
       .then((data) => setMcqData(data))
       .catch((error) =>
@@ -54,7 +54,7 @@ export default function EnglishTestDash() {
       })
     );
 
-    fetch("https://coursecrafterai.onrender.com/submitenglishtest", {
+    fetch("http://localhost:5000/lang/submitenglishtest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
